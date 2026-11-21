@@ -1,1 +1,342 @@
 @import "tailwindcss";
+
+/* Fuentes autoalojadas (Barlow y Barlow Condensed, OFL). Solo existen pesos 400 y 700. */
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/barlow-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/barlow-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/barlow-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/barlow-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/barlow-condensed-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/barlow-condensed-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/barlow-condensed-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/barlow-condensed-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Tokens (Tailwind v4): bg-fondo, text-tinta, bg-cobalto, font-display... ---------- */
+@theme {
+  --color-fondo: #f6f7f4;
+  --color-superficie: #ffffff;
+  --color-tinta: #1b1f24;
+  --color-tenue: #4b5563; /* texto secundario, 7:1 sobre fondo */
+  --color-linea: #c7ccd1;
+
+  --color-cobalto: #1d3fa8;
+  --color-cobalto-oscuro: #163285; /* hover / activo */
+  --color-cobalto-suave: #e8edfa; /* tinte para fantasma y atendida */
+  --color-cobalto-claro: #cbd7f6; /* texto secundario sobre cobalto */
+  --color-amarillo: #f2b705; /* solo "lo actual": paso en curso, ítem activo, selección */
+
+  --color-pendiente: #9a6700;
+  --color-pendiente-suave: #fbf3dc;
+  --color-confirmada: #1e6b3a;
+  --color-confirmada-suave: #e6f2ea;
+  --color-cancelada: #b42318;
+  --color-cancelada-oscuro: #8e1b12;
+  --color-cancelada-suave: #fce9e7;
+  --color-neutro: #6b7280;
+  --color-neutro-suave: #eceef0;
+
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Barlow", ui-sans-serif, system-ui, sans-serif;
+
+  /* Radio de 2px en todo; elevación por borde, sin sombras difusas. */
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --shadow-xs: 0 0 #0000;
+  --shadow-sm: 0 0 #0000;
+  --shadow-md: 0 0 #0000;
+  --shadow-lg: 0 0 #0000;
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-linea) var(--color-fondo);
+  }
+
+  body {
+    background-color: var(--color-fondo);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+    caret-color: var(--color-cobalto);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--color-amarillo);
+    color: var(--color-tinta);
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cobalto);
+    outline-offset: 2px;
+  }
+
+  /* Sobre cobalto el foco es amarillo. */
+  .sobre-cobalto :focus-visible {
+    outline-color: var(--color-amarillo);
+  }
+
+  ::placeholder {
+    color: var(--color-tenue);
+    opacity: 1;
+  }
+
+  input,
+  select,
+  textarea {
+    accent-color: var(--color-cobalto);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-fondo);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-linea);
+    border: 2px solid var(--color-fondo);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-neutro);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ---------- Clases propias ---------- */
+@layer components {
+  /* Etiqueta de campo, encabezado de tabla, dato corto: Barlow Condensed 700, 12px, mayúsculas. */
+  .etiqueta {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Placa, folio y números grandes. */
+  .placa {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  /* Título de pantalla (h1). */
+  .titulo-pagina {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+  @media (min-width: 1024px) {
+    .titulo-pagina {
+      font-size: 2.75rem;
+    }
+  }
+
+  /* Título de sección (h2). */
+  .titulo-seccion {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.375rem;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* Campo de formulario: input, select, textarea. */
+  .campo {
+    display: block;
+    width: 100%;
+    background-color: var(--color-superficie);
+    color: var(--color-tinta);
+    border: 1px solid var(--color-linea);
+    border-radius: 2px;
+    padding: 0.5rem 0.75rem;
+    font: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  input.campo,
+  select.campo {
+    height: 2.75rem;
+  }
+  @media (min-width: 768px) {
+    input.campo,
+    select.campo {
+      height: 2.5rem;
+    }
+  }
+  .campo:hover:not(:disabled):not([readonly]) {
+    border-color: var(--color-neutro);
+  }
+  .campo:focus-visible {
+    outline: 2px solid var(--color-cobalto);
+    outline-offset: 0;
+    border-color: var(--color-cobalto);
+  }
+  .campo[aria-invalid="true"] {
+    border-color: var(--color-cancelada);
+    border-width: 2px;
+    padding: calc(0.5rem - 1px) calc(0.75rem - 1px);
+  }
+  .campo:disabled,
+  .campo[readonly] {
+    background-color: var(--color-neutro-suave);
+    color: var(--color-tenue);
+  }
+  input.campo[type="date"] {
+    color: var(--color-tinta);
+    color-scheme: light;
+    accent-color: var(--color-cobalto);
+  }
+  input.campo[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 1;
+    /* tinta -> cobalto (#1D3FA8) */
+    filter: invert(17%) sepia(88%) saturate(2400%) hue-rotate(215deg) brightness(90%);
+  }
+  select.campo {
+    appearance: none;
+    padding-right: 2.5rem;
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%231b1f24' stroke-width='1.75' stroke-linecap='square'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E");
+  }
+  textarea.campo {
+    min-height: 6rem;
+    resize: vertical;
+  }
+
+  /* Tabla "de refacciones": regla superior de 2px, encabezado en mayúsculas, filas con línea. */
+  .tabla {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 2px solid var(--color-tinta);
+    text-align: left;
+  }
+  .tabla th {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-tenue);
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--color-linea);
+  }
+  .tabla td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--color-linea);
+    vertical-align: top;
+  }
+
+  /* Enlace de texto. */
+  .enlace {
+    color: var(--color-cobalto);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+  .enlace:hover {
+    color: var(--color-cobalto-oscuro);
+    text-decoration-thickness: 2px;
+  }
+
+  /* Pieza con borde: elevación por borde, regla superior de 2px (ficha de orden, ficha de cita). */
+  .ficha {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-linea);
+    border-top: 2px solid var(--color-tinta);
+    border-radius: 2px;
+    padding: 1rem;
+  }
+}
