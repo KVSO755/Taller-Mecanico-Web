@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-21T20:01:49.000Z",
+  "title": "Design System: TallerApp",
+  "extensions": {
+    "colorMeta": {
+      "fondo": {
+        "role": "neutral",
+        "displayName": "Hueso de Mostrador",
+        "canonical": "#f6f7f4",
+        "oklch": "oklch(97.454% 0.004 121.56)",
+        "tonalRamp": [
+          "oklch(15% 0.002 121.56)",
+          "oklch(25% 0.002 121.56)",
+          "oklch(35% 0.003 121.56)",
+          "oklch(48% 0.004 121.56)",
+          "oklch(62% 0.003 121.56)",
+          "oklch(75% 0.002 121.56)",
+          "oklch(86% 0.002 121.56)",
+          "oklch(95% 0.001 121.56)"
+        ]
+      },
+      "superficie": {
+        "role": "neutral",
+        "displayName": "Superficie Blanca",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100% 0 89.876)",
+        "tonalRamp": [
+          "oklch(15% 0 89.876)",
+          "oklch(25% 0 89.876)",
+          "oklch(35% 0 89.876)",
+          "oklch(48% 0 89.876)",
+          "oklch(62% 0 89.876)",
+          "oklch(75% 0 89.876)",
+          "oklch(86% 0 89.876)",
+          "oklch(95% 0 89.876)"
+        ]
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Tinta de Taller",
+        "canonical": "#1b1f24",
+        "oklch": "oklch(23.735% 0.011 254.056)",
+        "tonalRamp": [
+          "oklch(15% 0.005 254.056)",
+          "oklch(25% 0.007 254.056)",
+          "oklch(35% 0.008 254.056)",
+          "oklch(48% 0.011 254.056)",
+          "oklch(62% 0.009 254.056)",
+          "oklch(75% 0.007 254.056)",
+          "oklch(86% 0.005 254.056)",
+          "oklch(95% 0.003 254.056)"
+        ]
+      },
+      "tenue": {
+        "role": "neutral",
+        "displayName": "Tinta Tenue",
+        "canonical": "#4b5563",
+        "oklch": "oklch(44.611% 0.026 256.802)",
+        "tonalRamp": [
+          "oklch(15% 0.011 256.802)",
+          "oklch(25% 0.015 256.802)",
+          "oklch(35% 0.02 256.802)",
+          "oklch(48% 0.025 256.802)",
+          "oklch(62% 0.021 256.802)",
+          "oklch(75% 0.015 256.802)",
+          "oklch(86% 0.011 256.802)",
+          "oklch(95% 0.007 256.802)"
+        ]
+      },
+      "linea": {
+        "role": "neutral",
+        "displayName": "Línea de Plano",
+        "canonical": "#c7ccd1",
+        "oklch": "oklch(84.28% 0.009 247.931)",
+        "tonalRamp": [
+          "oklch(15% 0.004 247.931)",
+          "oklch(25% 0.005 247.931)",
+          "oklch(35% 0.007 247.931)",
+          "oklch(48% 0.009 247.931)",
+          "oklch(62% 0.007 247.931)",
+          "oklch(75% 0.005 247.931)",
+          "oklch(86% 0.004 247.931)",
+          "oklch(95% 0.002 247.931)"
+        ]
+      },
+      "cobalto": {
+        "role": "primary",
+        "displayName": "Cobalto de Uniforme",
+        "canonical": "#1d3fa8",
+        "oklch": "oklch(41.568% 0.173 265.386)",
+        "tonalRamp": [
+          "oklch(15% 0.072 265.386)",
+          "oklch(25% 0.101 265.386)",
+          "oklch(35% 0.13 265.386)",
+          "oklch(48% 0.167 265.386)",
+          "oklch(62% 0.138 265.386)",
+          "oklch(75% 0.101 265.386)",
+          "oklch(86% 0.069 265.386)",
+          "oklch(95% 0.043 265.386)"
+        ]
+      },
+      "cobalto-oscuro": {
+        "role": "primary",
+        "displayName": "Cobalto Profundo",
+        "canonical": "#163285",
+        "oklch": "oklch(35.457% 0.143 265.251)",
+        "tonalRamp": [
+          "oklch(15% 0.06 265.251)",
+          "oklch(25% 0.084 265.251)",
+          "oklch(35% 0.107 265.251)",
+          "oklch(48% 0.138 265.251)",
+          "oklch(62% 0.115 265.251)",
+          "oklch(75% 0.084 265.251)",
+          "oklch(86% 0.057 265.251)",
+          "oklch(95% 0.036 265.251)"
+        ]
+      },
+      "cobalto-suave": {
+        "role": "primary",
+        "displayName": "Cobalto Tenue",
+        "canonical": "#e8edfa",
+        "oklch": "oklch(94.612% 0.018 269.086)",
+        "tonalRamp": [
+          "oklch(15% 0.008 269.086)",
+          "oklch(25% 0.011 269.086)",
+          "oklch(35% 0.014 269.086)",
+          "oklch(48% 0.018 269.086)",
+          "oklch(62% 0.015 269.086)",
+          "oklch(75% 0.011 269.086)",
+          "oklch(86% 0.007 269.086)",
+          "oklch(95% 0.005 269.086)"
+        ]
+      },
+      "cobalto-claro": {
+        "role": "primary",
+        "displayName": "Cobalto Claro",
+        "canonical": "#cbd7f6",
+        "oklch": "oklch(87.987% 0.045 268.688)",
+        "tonalRamp": [
+          "oklch(15% 0.019 268.688)",
+          "oklch(25% 0.026 268.688)",
+          "oklch(35% 0.034 268.688)",
+          "oklch(48% 0.043 268.688)",
+          "oklch(62% 0.036 268.688)",
+          "oklch(75% 0.026 268.688)",
+          "oklch(86% 0.018 268.688)",
+          "oklch(95% 0.011 268.688)"
+        ]
+      },
+      "amarillo-llamada": {
+        "role": "secondary",
+        "displayName": "Amarillo Llamada",
+        "canonical": "#f2b705",
+        "oklch": "oklch(81.137% 0.166 84.963)",
+        "tonalRamp": [
+          "oklch(15% 0.069 84.963)",
+          "oklch(25% 0.097 84.963)",
+          "oklch(35% 0.124 84.963)",
+          "oklch(48% 0.16 84.963)",
+          "oklch(62% 0.132 84.963)",
+          "oklch(75% 0.097 84.963)",
+          "oklch(86% 0.066 84.963)",
+          "oklch(95% 0.041 84.963)"
+        ]
+      },
+      "pendiente": {
+        "role": "tertiary",
+        "displayName": "Pendiente ámbar",
+        "canonical": "#9a6700",
+        "oklch": "oklch(55.419% 0.117 75.008)",
+        "tonalRamp": [
+          "oklch(15% 0.049 75.008)",
+          "oklch(25% 0.068 75.008)",
+          "oklch(35% 0.088 75.008)",
+          "oklch(48% 0.113 75.008)",
+          "oklch(62% 0.094 75.008)",
+          "oklch(75% 0.068 75.008)",
+          "oklch(86% 0.047 75.008)",
+          "oklch(95% 0.029 75.008)"
+        ]
+      },
+      "pendiente-suave": {
+        "role": "tertiary",
+        "displayName": "Pendiente suave",
+        "canonical": "#fbf3dc",
+        "oklch": "oklch(96.434% 0.031 91.023)",
+        "tonalRamp": [
+          "oklch(15% 0.013 91.023)",
+          "oklch(25% 0.018 91.023)",
+          "oklch(35% 0.024 91.023)",
+          "oklch(48% 0.03 91.023)",
+          "oklch(62% 0.025 91.023)",
+          "oklch(75% 0.018 91.023)",
+          "oklch(86% 0.013 91.023)",
+          "oklch(95% 0.008 91.023)"
+        ]
+      },
+      "confirmada": {
+        "role": "tertiary",
+        "displayName": "Confirmada verde",
+        "canonical": "#1e6b3a",
+        "oklch": "oklch(46.857% 0.108 151.533)",
+        "tonalRamp": [
+          "oklch(15% 0.045 151.533)",
+          "oklch(25% 0.063 151.533)",
+          "oklch(35% 0.081 151.533)",
+          "oklch(48% 0.104 151.533)",
+          "oklch(62% 0.086 151.533)",
+          "oklch(75% 0.063 151.533)",
+          "oklch(86% 0.043 151.533)",
+          "oklch(95% 0.027 151.533)"
+        ]
+      },
+      "confirmada-suave": {
+        "role": "tertiary",
+        "displayName": "Confirmada suave",
+        "canonical": "#e6f2ea",
+        "oklch": "oklch(94.994% 0.017 156.907)",
+        "tonalRamp": [
+          "oklch(15% 0.007 156.907)",
+          "oklch(25% 0.01 156.907)",
+          "oklch(35% 0.012 156.907)",
+          "oklch(48% 0.016 156.907)",
+          "oklch(62% 0.013 156.907)",
+          "oklch(75% 0.01 156.907)",
+          "oklch(86% 0.007 156.907)",
+          "oklch(95% 0.004 156.907)"
+        ]
+      },
+      "cancelada": {
+        "role": "tertiary",
+        "displayName": "Cancelada rojo",
+        "canonical": "#b42318",
+        "oklch": "oklch(50.034% 0.182 29.513)",
+        "tonalRamp": [
+          "oklch(15% 0.076 29.513)",
+          "oklch(25% 0.106 29.513)",
+          "oklch(35% 0.137 29.513)",
+          "oklch(48% 0.176 29.513)",
+          "oklch(62% 0.146 29.513)",
+          "oklch(75% 0.106 29.513)",
+          "oklch(86% 0.073 29.513)",
+          "oklch(95% 0.046 29.513)"
+        ]
+      },
+      "cancelada-oscuro": {
+        "role": "tertiary",
+        "displayName": "Cancelada profundo",
+        "canonical": "#8e1b12",
+        "oklch": "oklch(42.165% 0.152 29.507)",
+        "tonalRamp": [
+          "oklch(15% 0.063 29.507)",
+          "oklch(25% 0.088 29.507)",
+          "oklch(35% 0.114 29.507)",
+          "oklch(48% 0.147 29.507)",
+          "oklch(62% 0.121 29.507)",
+          "oklch(75% 0.088 29.507)",
+          "oklch(86% 0.061 29.507)",
+          "oklch(95% 0.038 29.507)"
+        ]
+      },
+      "cancelada-suave": {
+        "role": "tertiary",
+        "displayName": "Cancelada suave",
+        "canonical": "#fce9e7",
+        "oklch": "oklch(94.863% 0.021 24.786)",
+        "tonalRamp": [
+          "oklch(15% 0.009 24.786)",
+          "oklch(25% 0.012 24.786)",
+          "oklch(35% 0.016 24.786)",
+          "oklch(48% 0.02 24.786)",
+          "oklch(62% 0.017 24.786)",
+          "oklch(75% 0.012 24.786)",
+          "oklch(86% 0.008 24.786)",
+          "oklch(95% 0.005 24.786)"
+        ]
+      },
+      "neutro": {
+        "role": "neutral",
+        "displayName": "Gris Neutro",
+        "canonical": "#6b7280",
+        "oklch": "oklch(55.102% 0.023 264.364)",
+        "tonalRamp": [
+          "oklch(15% 0.01 264.364)",
+          "oklch(25% 0.014 264.364)",
+          "oklch(35% 0.018 264.364)",
+          "oklch(48% 0.023 264.364)",
+          "oklch(62% 0.019 264.364)",
+          "oklch(75% 0.014 264.364)",
+          "oklch(86% 0.009 264.364)",
+          "oklch(95% 0.006 264.364)"
+        ]
+      },
+      "neutro-suave": {
+        "role": "neutral",
+        "displayName": "Gris Suave",
+        "canonical": "#eceef0",
+        "oklch": "oklch(94.816% 0.003 247.859)",
+        "tonalRamp": [
+          "oklch(15% 0.001 247.859)",
+          "oklch(25% 0.002 247.859)",
+          "oklch(35% 0.003 247.859)",
+          "oklch(48% 0.003 247.859)",
+          "oklch(62% 0.003 247.859)",
+          "oklch(75% 0.002 247.859)",
+          "oklch(86% 0.001 247.859)",
+          "oklch(95% 0.001 247.859)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "titulo-pagina": {
+        "displayName": "Título de página",
+        "purpose": "h1 de cada pantalla; la fecha va al lado."
+      },
+      "titulo-seccion": {
+        "displayName": "Título de sección",
+        "purpose": "h2 en mayúsculas."
+      },
+      "placa": {
+        "displayName": "Placa / folio",
+        "purpose": "Placas, folios y horas; la pieza ancla de cada ficha."
+      },
+      "etiqueta": {
+        "displayName": "Etiqueta",
+        "purpose": "Etiquetas de campo, encabezados de tabla, estados y datos cortos."
+      },
+      "cuerpo": {
+        "displayName": "Cuerpo",
+        "purpose": "Texto corriente en Barlow 400; negrita 700 para datos clave."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ninguna",
+        "value": "0 0 #0000",
+        "purpose": "Todos los --shadow-* están anulados; la elevación es borde de 1px y regla superior de 2px en tinta."
+      }
+    ],
+    "motion": [
+      {
+        "name": "transicion-color",
+        "value": "transition-colors (150ms, ease por defecto de Tailwind)",
+        "purpose": "Hover y activo de botones e ítems de menú."
+      },
+      {
+        "name": "progreso-orden",
+        "value": "tramo completado = calc(var(--p) * 100%) de la línea guía, sin animación",
+        "purpose": "Avance de la orden; --p = paso actual / 4."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation/transition 0.01ms con prefers-reduced-motion: reduce",
+        "purpose": "Respeta la preferencia del sistema."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "container-360",
+        "value": "360px (container query de ProgresoOrden: vertical por debajo)"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px (aparece el riel de 240px)"
+      },
+      {
+        "name": "xl",
+        "value": "1280px (agenda + 420px de órdenes en dos columnas)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón primario",
+      "kind": "button",
+      "refersTo": "boton-primario",
+      "description": "Acción principal de la pantalla, relleno cobalto.",
+      "html": "<button class=\"ds-btn ds-btn-primario\">Confirmar cita</button>",
+      "css": ":host{--color-fondo:#f6f7f4;--color-tinta:#1b1f24;--color-tenue:#4b5563;--color-linea:#c7ccd1;--color-cobalto:#1d3fa8;--color-cobalto-oscuro:#163285;--color-cobalto-suave:#e8edfa;--color-cobalto-claro:#cbd7f6;--color-amarillo:#f2b705;--color-pendiente:#9a6700;--color-pendiente-suave:#fbf3dc;--color-confirmada:#1e6b3a;--color-confirmada-suave:#e6f2ea;--color-cancelada:#b42318;--color-cancelada-oscuro:#8e1b12;--color-cancelada-suave:#fce9e7;--color-neutro:#6b7280;--color-neutro-suave:#eceef0}.ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:2px;font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer;transition:background-color .15s}.ds-btn:focus-visible{outline:2px solid var(--color-cobalto);outline-offset:2px}.ds-btn-primario{background:var(--color-cobalto);border:1px solid var(--color-cobalto);color:#fff}.ds-btn-primario:hover,.ds-btn-primario:active{background:var(--color-cobalto-oscuro)}"
+    },
+    {
+      "name": "Botón secundario",
+      "kind": "button",
+      "refersTo": "boton-secundario",
+      "description": "Acción alternativa con borde en tinta.",
+      "html": "<button class=\"ds-btn ds-btn-secundario\">Reprogramar</button>",
+      "css": ":host{--color-fondo:#f6f7f4;--color-tinta:#1b1f24;--color-tenue:#4b5563;--color-linea:#c7ccd1;--color-cobalto:#1d3fa8;--color-cobalto-oscuro:#163285;--color-cobalto-suave:#e8edfa;--color-cobalto-claro:#cbd7f6;--color-amarillo:#f2b705;--color-pendiente:#9a6700;--color-pendiente-suave:#fbf3dc;--color-confirmada:#1e6b3a;--color-confirmada-suave:#e6f2ea;--color-cancelada:#b42318;--color-cancelada-oscuro:#8e1b12;--color-cancelada-suave:#fce9e7;--color-neutro:#6b7280;--color-neutro-suave:#eceef0}.ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:2px;font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer;transition:background-color .15s}.ds-btn:focus-visible{outline:2px solid var(--color-cobalto);outline-offset:2px}.ds-btn-secundario{background:#fff;border:1px solid var(--color-tinta);color:var(--color-tinta)}.ds-btn-secundario:hover{background:var(--color-neutro-suave)}.ds-btn-secundario:active{background:var(--color-linea)}"
+    },
+    {
+      "name": "Botón peligro",
+      "kind": "button",
+      "refersTo": "boton-peligro",
+      "description": "Acción destructiva, como cancelar una cita.",
+      "html": "<button class=\"ds-btn ds-btn-peligro\">Cancelar cita</button>",
+      "css": ":host{--color-fondo:#f6f7f4;--color-tinta:#1b1f24;--color-tenue:#4b5563;--color-linea:#c7ccd1;--color-cobalto:#1d3fa8;--color-cobalto-oscuro:#163285;--color-cobalto-suave:#e8edfa;--color-cobalto-claro:#cbd7f6;--color-amarillo:#f2b705;--color-pendiente:#9a6700;--color-pendiente-suave:#fbf3dc;--color-confirmada:#1e6b3a;--color-confirmada-suave:#e6f2ea;--color-cancelada:#b42318;--color-cancelada-oscuro:#8e1b12;--color-cancelada-suave:#fce9e7;--color-neutro:#6b7280;--color-neutro-suave:#eceef0}.ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:2px;font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer;transition:background-color .15s}.ds-btn:focus-visible{outline:2px solid var(--color-cobalto);outline-offset:2px}.ds-btn-peligro{background:var(--color-cancelada);border:1px solid var(--color-cancelada);color:#fff}.ds-btn-peligro:hover,.ds-btn-peligro:active{background:var(--color-cancelada-oscuro)}"
+    },
+    {
+      "name": "Botón fantasma",
+      "kind": "button",
+      "refersTo": "boton-fantasma",
+      "description": "Acción terciaria, texto cobalto sin relleno.",
+      "html": "<button class=\"ds-btn ds-btn-fantasma\">Ver historial</button>",
+      "css": ":host{--color-fondo:#f6f7f4;--color-tinta:#1b1f24;--color-tenue:#4b5563;--color-linea:#c7ccd1;--color-cobalto:#1d3fa8;--color-cobalto-oscuro:#163285;--color-cobalto-suave:#e8edfa;--color-cobalto-claro:#cbd7f6;--color-amarillo:#f2b705;--color-pendiente:#9a6700;--color-pendiente-suave:#fbf3dc;--color-confirmada:#1e6b3a;--color-confirmada-suave:#e6f2ea;--color-cancelada:#b42318;--color-cancelada-oscuro:#8e1b12;--color-cancelada-suave:#fce9e7;--color-neutro:#6b7280;--color-neutro-suave:#eceef0}.ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:2px;font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer;transition:background-color .15s}.ds-btn:focus-visible{outline:2px solid var(--color-cobalto);outline-offset:2px}.ds-btn-fantasma{background:transparent;border:1px solid transparent;color:var(--color-cobalto)}.ds-btn-fantasma:hover{background:var(--color-cobalto-suave)}.ds-btn-fantasma:active{background:var(--color-cobalto-claro)}"
+    },
+    {
+      "name": "Campo de formulario",
+      "kind": "input",
+      "refersTo": "campo",
+      "description": "Etiqueta condensada en mayúsculas sobre campo de borde fino.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-placa\" class=\"ds-label\">Placa</label><input id=\"ds-placa\" class=\"ds-input\" placeholder=\"ABC1234\"></div>",
+      "css": ":host{--color-fondo:#f6f7f4;--color-tinta:#1b1f24;--color-tenue:#4b5563;--color-linea:#c7ccd1;--color-cobalto:#1d3fa8;--color-cobalto-oscuro:#163285;--color-cobalto-suave:#e8edfa;--color-cobalto-claro:#cbd7f6;--color-amarillo:#f2b705;--color-pendiente:#9a6700;--color-pendiente-suave:#fbf3dc;--color-confirmada:#1e6b3a;--color-confirmada-suave:#e6f2ea;--color-cancelada:#b42318;--color-cancelada-oscuro:#8e1b12;--color-cancelada-suave:#fce9e7;--color-neutro:#6b7280;--color-neutro-suave:#eceef0}.ds-label{display:block;margin-bottom:6px;font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:12px;line-height:16px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-tinta)}.ds-input{display:block;width:100%;box-sizing:border-box;height:44px;padding:8px 12px;background:#fff;color:var(--color-tinta);border:1px solid var(--color-linea);border-radius:2px;font:inherit;font-size:16px}.ds-input:hover{border-color:var(--color-neutro)}.ds-input:focus-visible{outline:2px solid var(--color-cobalto);outline-offset:0;border-color:var(--color-cobalto)} .ds-campo[type=date]{color:var(--color-tinta);color-scheme:light;accent-color:var(--color-cobalto)}"
+    },
+    {
+      "name": "Navegación (riel)",
+      "kind": "nav",
+      "refersTo": "riel",
+      "description": "Riel cobalto; ítem activo con tinte blanco y cuadrito amarillo.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Principal\"><a class=\"ds-nav-i ds-nav-activo\" href=\"#\"><span class=\"ds-nav-m\"></span>Inicio</a><a class=\"ds-nav-i\" href=\"#\"><span class=\"ds-nav-m\"></span>Citas</a><a class=\"ds-nav-i\" href=\"#\"><span class=\"ds-nav-m\"></span>Órdenes</a></nav>",
+      "css": ":host{--color-fondo:#f6f7f4;--color-tinta:#1b1f24;--color-tenue:#4b5563;--color-linea:#c7ccd1;--color-cobalto:#1d3fa8;--color-cobalto-oscuro:#163285;--color-cobalto-suave:#e8edfa;--color-cobalto-claro:#cbd7f6;--color-amarillo:#f2b705;--color-pendiente:#9a6700;--color-pendiente-suave:#fbf3dc;--color-confirmada:#1e6b3a;--color-confirmada-suave:#e6f2ea;--color-cancelada:#b42318;--color-cancelada-oscuro:#8e1b12;--color-cancelada-suave:#fce9e7;--color-neutro:#6b7280;--color-neutro-suave:#eceef0}.ds-nav{background:var(--color-cobalto);width:240px;padding:16px 0;font-family:'Barlow',system-ui,sans-serif}.ds-nav-i{display:flex;align-items:center;gap:12px;min-height:48px;padding:12px 24px;color:#fff;text-decoration:none;font-size:16px}.ds-nav-i:hover{background:rgba(255,255,255,.08)}.ds-nav-i:focus-visible{outline:2px solid var(--color-amarillo);outline-offset:-2px}.ds-nav-m{width:8px;height:8px;background:transparent}.ds-nav-activo{background:rgba(255,255,255,.12)}.ds-nav-activo .ds-nav-m{background:var(--color-amarillo)}"
+    },
+    {
+      "name": "Estado",
+      "kind": "chip",
+      "refersTo": "estado-confirmada",
+      "description": "Cuadrito de 8px y texto sobre tinte; nunca solo color.",
+      "html": "<span class=\"ds-st ds-st-p\"><i></i>Pendiente</span> <span class=\"ds-st ds-st-c\"><i></i>Confirmada</span> <span class=\"ds-st ds-st-x\"><i></i>Cancelada</span> <span class=\"ds-st ds-st-a\"><i></i>Atendida</span>",
+      "css": ":host{--color-fondo:#f6f7f4;--color-tinta:#1b1f24;--color-tenue:#4b5563;--color-linea:#c7ccd1;--color-cobalto:#1d3fa8;--color-cobalto-oscuro:#163285;--color-cobalto-suave:#e8edfa;--color-cobalto-claro:#cbd7f6;--color-amarillo:#f2b705;--color-pendiente:#9a6700;--color-pendiente-suave:#fbf3dc;--color-confirmada:#1e6b3a;--color-confirmada-suave:#e6f2ea;--color-cancelada:#b42318;--color-cancelada-oscuro:#8e1b12;--color-cancelada-suave:#fce9e7;--color-neutro:#6b7280;--color-neutro-suave:#eceef0}.ds-st{display:inline-flex;align-items:center;gap:8px;padding:4px 8px;border-radius:2px;font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:12px;line-height:16px;letter-spacing:.12em;text-transform:uppercase}.ds-st i{width:8px;height:8px;background:currentColor}.ds-st-p{background:var(--color-pendiente-suave);color:var(--color-pendiente)}.ds-st-c{background:var(--color-confirmada-suave);color:var(--color-confirmada)}.ds-st-x{background:var(--color-cancelada-suave);color:var(--color-cancelada)}.ds-st-a{background:var(--color-neutro-suave);color:var(--color-tenue)}"
+    },
+    {
+      "name": "Ficha de orden",
+      "kind": "card",
+      "refersTo": "ficha",
+      "description": "Superficie con borde y regla superior de 2px en tinta; placa grande y folio.",
+      "html": "<article class=\"ds-ficha\"><div class=\"ds-fh\"><div><h3 class=\"ds-placa\">ABC1234</h3><p class=\"ds-m\">Nissan Versa 2019</p><p class=\"ds-t\">Ana Pérez</p></div><span class=\"ds-folio\">Orden #0005</span></div></article>",
+      "css": ":host{--color-fondo:#f6f7f4;--color-tinta:#1b1f24;--color-tenue:#4b5563;--color-linea:#c7ccd1;--color-cobalto:#1d3fa8;--color-cobalto-oscuro:#163285;--color-cobalto-suave:#e8edfa;--color-cobalto-claro:#cbd7f6;--color-amarillo:#f2b705;--color-pendiente:#9a6700;--color-pendiente-suave:#fbf3dc;--color-confirmada:#1e6b3a;--color-confirmada-suave:#e6f2ea;--color-cancelada:#b42318;--color-cancelada-oscuro:#8e1b12;--color-cancelada-suave:#fce9e7;--color-neutro:#6b7280;--color-neutro-suave:#eceef0}.ds-ficha{background:#fff;border:1px solid var(--color-linea);border-top:2px solid var(--color-tinta);border-radius:2px;padding:16px;font-family:'Barlow',system-ui,sans-serif;color:var(--color-tinta)}.ds-fh{display:flex;justify-content:space-between;gap:12px}.ds-placa{margin:0;font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:36px;line-height:1;letter-spacing:.04em}.ds-m{margin:8px 0 0;font-weight:700}.ds-t{margin:0;color:var(--color-tenue)}.ds-folio{font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-cobalto)}"
+    },
+    {
+      "name": "ProgresoOrden",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Cinco llamadas numeradas sobre una línea guía; la actual en amarillo, las hechas en tinta.",
+      "html": "<div class=\"ds-pr\"><div class=\"ds-gl\"><span></span></div><ol><li class=\"ds-ok\"><b class=\"ds-h\">1</b>Recibido</li><li class=\"ds-ok\"><b class=\"ds-h\">2</b>Diagnóstico</li><li class=\"ds-ok\"><b class=\"ds-a\">3</b>Reparación</li><li><b>4</b>Listo</li><li><b>5</b>Entregado</li></ol></div>",
+      "css": ":host{--color-fondo:#f6f7f4;--color-tinta:#1b1f24;--color-tenue:#4b5563;--color-linea:#c7ccd1;--color-cobalto:#1d3fa8;--color-cobalto-oscuro:#163285;--color-cobalto-suave:#e8edfa;--color-cobalto-claro:#cbd7f6;--color-amarillo:#f2b705;--color-pendiente:#9a6700;--color-pendiente-suave:#fbf3dc;--color-confirmada:#1e6b3a;--color-confirmada-suave:#e6f2ea;--color-cancelada:#b42318;--color-cancelada-oscuro:#8e1b12;--color-cancelada-suave:#fce9e7;--color-neutro:#6b7280;--color-neutro-suave:#eceef0}.ds-pr{position:relative;width:400px;font-family:'Barlow Condensed','Barlow',system-ui,sans-serif}.ds-gl{position:absolute;left:10%;right:10%;top:15px;height:2px;background:var(--color-linea)}.ds-gl span{display:block;height:100%;width:50%;background:var(--color-tinta)}.ds-pr ol{position:relative;display:grid;grid-template-columns:repeat(5,1fr);margin:0;padding:0;list-style:none;text-align:center;font-size:12px;line-height:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-tenue)}.ds-pr li{display:flex;flex-direction:column;align-items:center;gap:8px}.ds-pr b{display:flex;align-items:center;justify-content:center;border-radius:50%;border:2px solid var(--color-linea);width:28px;height:28px;margin:2px;font-size:16px;background:var(--color-fondo);color:var(--color-tenue)}.ds-pr b.ds-h{background:var(--color-tinta);border-color:var(--color-tinta);color:#fff}.ds-pr b.ds-a{width:32px;height:32px;margin:0;font-size:18px;background:var(--color-amarillo);border-color:var(--color-tinta);color:var(--color-tinta)}.ds-pr li.ds-ok{font-weight:700;color:var(--color-tinta)}"
+    },
+    {
+      "name": "AgendaRejilla",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Retícula hora × 3 lugares: celdas ocupadas, libres punteadas, fila llena y franja única de 44px \"Libre · 3 lugares\" para horas sin citas.",
+      "html": "<ol class=\"ds-ag\"><li><div><h3 class=\"ds-hr\">09:00</h3></div><div class=\"ds-g\"><div class=\"ds-c\"><b class=\"ds-pl\">ABC1234</b><p>Ana Pérez · Afinación</p></div><div class=\"ds-lb\">Libre</div><div class=\"ds-lb\">Libre</div></div></li><li><div><h3 class=\"ds-hr\">10:00</h3><span class=\"ds-ll\">Lleno</span></div><div class=\"ds-g\"><div class=\"ds-c\"><b class=\"ds-pl\">XYZ9876</b><p>Luis Ruiz · Frenos</p></div><div class=\"ds-c\"><b class=\"ds-pl\">DEF5521</b><p>Marta Gil · Revisión</p></div><div class=\"ds-c\"><b class=\"ds-pl\">GHI3340</b><p>Iván Soto · Aceite</p></div></div></li><li><div><h3 class=\"ds-hr\">11:00</h3></div><p class=\"ds-fr\">Libre · 3 lugares</p></li></ol>",
+      "css": ":host{--color-fondo:#f6f7f4;--color-tinta:#1b1f24;--color-tenue:#4b5563;--color-linea:#c7ccd1;--color-cobalto:#1d3fa8;--color-cobalto-oscuro:#163285;--color-cobalto-suave:#e8edfa;--color-cobalto-claro:#cbd7f6;--color-amarillo:#f2b705;--color-pendiente:#9a6700;--color-pendiente-suave:#fbf3dc;--color-confirmada:#1e6b3a;--color-confirmada-suave:#e6f2ea;--color-cancelada:#b42318;--color-cancelada-oscuro:#8e1b12;--color-cancelada-suave:#fce9e7;--color-neutro:#6b7280;--color-neutro-suave:#eceef0}.ds-ag{list-style:none;margin:0;padding:0;border-top:2px solid var(--color-tinta);width:560px;font-family:'Barlow',system-ui,sans-serif;color:var(--color-tinta)}.ds-ag>li{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--color-linea)}.ds-hr{margin:0;font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:24px;line-height:1;letter-spacing:.04em}.ds-ll{display:inline-block;margin-top:4px;padding:0 8px;background:var(--color-tinta);color:#fff;font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:12px;line-height:16px;letter-spacing:.12em;text-transform:uppercase}.ds-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.ds-c{border:1px solid var(--color-linea);background:#fff;padding:12px;min-width:0}.ds-pl{font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:30px;line-height:1;letter-spacing:.04em}.ds-c p{margin:8px 0 0;font-size:14px}.ds-lb{display:flex;align-items:center;justify-content:center;min-height:96px;border:1px dashed var(--color-linea);color:var(--color-tenue);font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase}.ds-fr{margin:0;display:flex;align-items:center;justify-content:center;height:44px;border:1px dashed var(--color-linea);color:var(--color-tenue);font-family:'Barlow Condensed','Barlow',system-ui,sans-serif;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Manual de Servicio",
+    "overview": "El taller se lee como un catálogo de despiece: cada vehículo, cita y orden es una pieza con número propio (placa, folio `#0005`, cita `#003`) y el avance de una orden es una secuencia de llamadas numeradas unidas por una línea guía. La interfaz es plana, de línea fina y densa en información útil; se parece más a una lámina técnica impresa que a un panel de métricas.\n\nEl color es plano y escaso. Un cobalto sólido define el shell (riel en escritorio, barra superior en celular); el amarillo llamada aparece únicamente para \"lo actual\": el paso en curso, el ítem de menú activo, la selección de texto. No hay degradados ni sombras difusas: la elevación es un borde, y las piezas importantes llevan una regla superior de 2px en tinta, como un encabezado de tabla de refacciones. Radios de 2px en todo.\n\nFunciona igual de bien en el mostrador (escritorio, 1440) y en el celular: mismos tokens, misma jerarquía, la retícula de agenda se pliega en lista por hora y las llamadas pasan de horizontales a verticales. Las columnas de la agenda son \"3 lugares\" de capacidad, sin rótulo de bahía: las citas no guardan bahía.",
+    "keyCharacteristics": [
+      "Placas, folios y horas como números grandes en Barlow Condensed 700, siempre tabulares.",
+      "Elevación por borde y regla superior de 2px; cero sombras (todos los `--shadow-*` están anulados).",
+      "Amarillo solo para lo actual; estados siempre con texto y cuadrito, nunca solo color.",
+      "Una sola acción primaria cobalto por momento.",
+      "Radio único de 2px (`--radius-xs` a `--radius-xl` valen lo mismo)."
+    ],
+    "rules": [
+      {
+        "name": "The Lo-Actual Rule",
+        "body": "El amarillo llamada marca solo lo que está en curso o seleccionado en ese momento. Nunca decora, nunca es botón, nunca es estado de cita.",
+        "section": "colors"
+      },
+      {
+        "name": "The Texto-Más-Color Rule",
+        "body": "Todo estado se comunica con palabra y cuadrito de 8px; el color nunca va solo.",
+        "section": "colors"
+      },
+      {
+        "name": "The Cobalto-Es-El-Shell Rule",
+        "body": "El cobalto sólido cubre riel y barra superior y es el color de la acción primaria; en el cuerpo de la página no se usa como relleno de área grande.",
+        "section": "colors"
+      },
+      {
+        "name": "The Placa-Primero Rule",
+        "body": "En toda ficha o celda de vehículo la placa es lo más grande y va en Barlow Condensed 700; nombre y modelo van debajo en cuerpo.",
+        "section": "typography"
+      },
+      {
+        "name": "The Dos-Voces Rule",
+        "body": "Condensada para identificar, Barlow para leer. No se introduce una tercera familia.",
+        "section": "typography"
+      },
+      {
+        "name": "The Borde-Es-La-Elevación Rule",
+        "body": "Para separar o levantar algo se usa borde de 1px, o regla de 2px en tinta para la pieza principal. Ninguna sombra, ningún desenfoque.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** dar a cada vehículo, cita y orden un identificador visible: placa en `.placa`, folio como `Orden #0005` o `Cita #003`.",
+      "**Do** separar con borde de 1px `linea` y marcar la pieza principal con regla superior de 2px `tinta`.",
+      "**Do** reservar el amarillo `#f2b705` para lo actual (paso en curso, ítem activo, selección, foco sobre cobalto).",
+      "**Do** acompañar todo estado con texto y cuadrito de 8px además del color.",
+      "**Do** mantener radio de 2px y trazo de iconos de 1.75px con terminales cuadrados.",
+      "**Do** dar 44px de alto táctil en celular y mostrar la acción siguiente única (Confirmar, Crear orden, Avanzar a…).",
+      "Do mostrar las horas vacías de la agenda como una franja punteada única de 44px \"Libre · 3 lugares\", no como tres celdas vacías.",
+      "Do poner en cada celda de cita la acción principal primero a ancho completo y las secundarias (Reprogramar, Cancelar) en dos columnas iguales al fondo.",
+      "**Do** ofrecer los cuatro estados en toda lista: cargando, datos, vacía, error con \"Reintentar\"."
+    ],
+    "donts": [
+      "**Don't** usar sombras difusas, degradados ni tarjetas blancas flotantes con badges de colores y métricas grandes (panel SaaS).",
+      "**Don't** usar el amarillo como relleno de botón, fondo de sección o color de estado.",
+      "**Don't** introducir una tercera familia tipográfica ni pesos distintos de 400 y 700 (no están cargados).",
+      "**Don't** redondear más de 2px; la única excepción es el círculo numerado de ProgresoOrden.",
+      "**Don't** comunicar estado solo con color.",
+      "**Don't** poner la fecha o un dato corto como sobretítulo sobre el h1; va al lado del título.",
+      "Don't rotular las columnas de la agenda como \"Bahía n\": las citas no guardan bahía; son \"3 lugares\" de capacidad."
+    ]
+  }
+}
