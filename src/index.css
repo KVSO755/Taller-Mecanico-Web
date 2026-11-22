@@ -119,6 +119,15 @@
     font-family: var(--font-sans);
     font-variant-numeric: tabular-nums;
     caret-color: var(--color-cobalto);
+    /* Textos de usuario sin espacios (200 letras seguidas) no rompen el diseño. */
+    overflow-wrap: anywhere;
+  }
+
+  /* Encabezados de tabla, etiquetas y botones conservan sus palabras enteras. */
+  th,
+  button,
+  .etiqueta {
+    overflow-wrap: normal;
   }
 
   h1,
@@ -185,6 +194,61 @@
   }
 }
 
+/* ---------- Impresión: factura en hoja carta, blanco y negro ---------- */
+@media print {
+  @page {
+    size: letter;
+    margin: 15mm;
+  }
+  html,
+  body {
+    background: var(--color-superficie) !important;
+    color: var(--color-tinta) !important;
+  }
+  .no-imprimir,
+  button,
+  nav,
+  aside,
+  header.sobre-cobalto {
+    display: none !important;
+  }
+  /* El riel deja de ser columna: el contenido ocupa todo el ancho. */
+  body > div,
+  #root > div {
+    display: block !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+  main > div,
+  main .max-w-4xl {
+    max-width: none !important;
+  }
+  .documento {
+    border: 0 !important;
+    border-top: 0 !important;
+    padding: 0 !important;
+    background: var(--color-superficie) !important;
+    color: var(--color-tinta) !important;
+    break-inside: avoid;
+  }
+  .documento * {
+    color: var(--color-tinta) !important;
+    background: transparent !important;
+    border-color: var(--color-tinta) !important;
+  }
+  .documento .tabla {
+    border-top: 2px solid var(--color-tinta);
+  }
+  .documento tr,
+  .documento li {
+    break-inside: avoid;
+  }
+  a {
+    text-decoration: none !important;
+  }
+}
+
 /* ---------- Clases propias ---------- */
 @layer components {
   /* Etiqueta de campo, encabezado de tabla, dato corto: Barlow Condensed 700, 12px, mayúsculas. */
@@ -209,13 +273,13 @@
   .titulo-pagina {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.75rem;
     line-height: 1.1;
     letter-spacing: 0.01em;
   }
   @media (min-width: 1024px) {
     .titulo-pagina {
-      font-size: 2.75rem;
+      font-size: 2.25rem;
     }
   }
 
@@ -223,7 +287,7 @@
   .titulo-seccion {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.375rem;
+    font-size: 1.125rem;
     line-height: 1.25;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -313,7 +377,7 @@
     border-bottom: 1px solid var(--color-linea);
   }
   .tabla td {
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem;
     border-bottom: 1px solid var(--color-linea);
     vertical-align: top;
   }
@@ -337,6 +401,17 @@
     border: 1px solid var(--color-linea);
     border-top: 2px solid var(--color-tinta);
     border-radius: 2px;
-    padding: 1rem;
+    padding: 0.75rem;
+  }
+  @media (min-width: 768px) {
+    .ficha {
+      padding: 0.875rem;
+    }
+  }
+  /* Separación estándar entre fichas apiladas: 12px. */
+  .lista-fichas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 }
