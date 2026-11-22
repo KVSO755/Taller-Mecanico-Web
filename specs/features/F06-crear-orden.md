@@ -18,7 +18,8 @@ Empleado y Administrador.
 
 - vehículo (precargado si viene de una cita; si es directa, se busca por placa);
 - kilometraje de llegada;
-- diagnóstico inicial (opcional: puede escribirse después en F07).
+- diagnóstico inicial (opcional: puede escribirse después en F07);
+- mecánico (F09): si crea un empleado, la orden queda asignada a él; si crea el administrador, elige mecánico o "Sin asignar".
 
 ## Flujo principal — Desde una cita
 
@@ -34,7 +35,7 @@ Empleado y Administrador.
 1. En `/taller/ordenes` presiona "Nueva orden".
 2. Escribe la placa y presiona "Buscar".
 3. El sistema muestra el vehículo y su dueño.
-4. Si el vehículo tiene una cita activa futura, la pantalla muestra "Este vehículo tiene cita el {fecha}." con un botón "Cancelar cita" (`cancelar_cita`). La orden directa se permite de todos modos; la cita **no** se cancela sola.
+4. Si el vehículo tiene una cita activa futura, la pantalla muestra "Este vehículo tiene cita el {fecha}." con un botón "Cancelar cita" (`cancelar_cita`) y un enlace a esa fecha en la agenda (`/taller/citas?fecha=…`). La orden directa se permite de todos modos; la cita **no** se cancela sola.
 5. Continúa igual que el paso 3 del flujo principal, con `cita_id = null`.
 
 ## Validaciones
@@ -62,24 +63,24 @@ La orden aparece en `/taller/ordenes` con estatus "Recibido", y el cliente ve en
 
 ## Criterios de aceptación
 
-- [ ] Desde una cita confirmada se crea la orden con el vehículo precargado.
-- [ ] Al crearla, la cita pasa a `atendida`.
-- [ ] No se crea orden desde una cita `pendiente` ni desde una cita de otro día.
+- [x] Desde una cita confirmada se crea la orden con el vehículo precargado.
+- [x] Al crearla, la cita pasa a `atendida`.
+- [x] No se crea orden desde una cita `pendiente` ni desde una cita de otro día.
 - [ ] Una cita confirmada de hoy cuya hora ya pasó sí permite crear la orden.
 - [ ] En una orden directa con cita futura activa se muestra "Este vehículo tiene cita el {fecha}." con botón para cancelarla, y la cita no se cancela sola.
 - [ ] Se puede crear una orden directa buscando por placa.
-- [ ] No se acepta un kilometraje menor al del vehículo.
-- [ ] Al crear la orden, el kilometraje del vehículo se actualiza.
-- [ ] No se pueden crear dos órdenes abiertas para el mismo vehículo.
-- [ ] La orden nueva tiene estatus `recibido` y un registro en la bitácora de cambios.
+- [x] No se acepta un kilometraje menor al del vehículo.
+- [x] Al crear la orden, el kilometraje del vehículo se actualiza.
+- [x] No se pueden crear dos órdenes abiertas para el mismo vehículo.
+- [x] La orden nueva tiene estatus `recibido` y un registro en la bitácora de cambios.
 - [ ] El cliente ve el estatus "Recibido" en su vehículo.
 
 ## Tasks
 
-- [ ] SQL: tablas `ordenes` y `cambios_estatus` + RLS (solo `select`; sin insert/update directo salvo las notas de F07).
-- [ ] SQL: función `crear_orden(vehiculo_id, cita_id, kilometraje, diagnostico)` (`SECURITY DEFINER`, `set search_path = public`, solo empleado/admin) que valida el kilometraje contra el del vehículo, que la cita esté `confirmada` y sea de hoy (America/Tijuana), y hace todo en una transacción (orden, cita atendida, `vehiculos.kilometraje`, bitácora).
-- [ ] `services/ordenes.js`: `crearOrden` (vía `rpc`), `buscarVehiculoPorPlaca`, `citaActivaDeVehiculo`.
-- [ ] Pantalla `taller/NuevaOrden` (modo cita y modo directo).
-- [ ] Aviso de cita futura con botón "Cancelar cita" en el modo directo de `taller/NuevaOrden`.
-- [ ] Botón "Crear orden" en `taller/Citas` (solo citas confirmadas de hoy).
+- [x] SQL: tablas `ordenes` y `cambios_estatus` + RLS (solo `select`; sin insert/update directo salvo las notas de F07).
+- [x] SQL: función `crear_orden(vehiculo_id, cita_id, kilometraje, diagnostico)` (`SECURITY DEFINER`, `set search_path = public`, solo empleado/admin) que valida el kilometraje contra el del vehículo, que la cita esté `confirmada` y sea de hoy (America/Tijuana), y hace todo en una transacción (orden, cita atendida, `vehiculos.kilometraje`, bitácora).
+- [x] `services/ordenes.js`: `crearOrden` (vía `rpc`), `buscarVehiculoPorPlaca`, `obtenerCitaParaOrden`, `ordenAbiertaDeVehiculo`, `ordenDeCita` y `citaActivaDeVehiculo`.
+- [x] Pantalla `taller/NuevaOrden` (modo cita y modo directo).
+- [x] Aviso de cita futura con botón "Cancelar cita" en el modo directo de `taller/NuevaOrden`.
+- [x] Botón "Crear orden" en `taller/Citas` (solo citas confirmadas de hoy).
 - [ ] Probar criterios de aceptación.

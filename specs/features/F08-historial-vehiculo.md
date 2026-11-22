@@ -29,7 +29,8 @@ Cliente (solo sus vehículos). Empleado y Administrador (cualquier vehículo).
 - kilometraje al recibirlo;
 - motivo de la cita (si vino de cita);
 - diagnóstico;
-- trabajo realizado.
+- trabajo realizado;
+- refacciones usadas (nombre y cantidad, **sin costos**; F10, Q41).
 
 Al expandir un servicio se ve su bitácora de cambios de estatus con fechas.
 
@@ -62,8 +63,8 @@ Cliente y taller ven la misma información del vehículo; cada servicio entregad
 
 ## Criterios de aceptación
 
-- [ ] El cliente ve el historial de cada uno de sus vehículos.
-- [ ] Al entregar una orden (F07), aparece en el historial sin pasos extra.
+- [x] El cliente ve el historial de cada uno de sus vehículos.
+- [x] Al entregar una orden (F07), aparece en el historial sin pasos extra.
 - [ ] Los servicios se ordenan del más reciente al más antiguo.
 - [ ] Un vehículo sin servicios muestra el mensaje vacío.
 - [ ] Un cliente que cambia el id en la URL a un vehículo ajeno ve "Vehículo no encontrado".
@@ -71,9 +72,9 @@ Cliente y taller ven la misma información del vehículo; cada servicio entregad
 
 ## Tasks
 
-- [ ] `services/vehiculos.js`: `historialVehiculo(id)` (vehículo + órdenes con su cita y bitácora en una consulta con `select` anidado).
-- [ ] Componente `HistorialServicios` (lista expandible) reutilizado por cliente y taller.
-- [ ] Pantalla `cliente/DetalleVehiculo` (encabezado + orden en curso + historial).
-- [ ] Pantalla `taller/HistorialVehiculo`.
-- [ ] Buscador por placa en `taller/Inicio`.
+- [x] `services/vehiculos.js`: `historialVehiculo(id)` (vehículo + órdenes con su cita y bitácora en una consulta con `select` anidado).
+- [x] Componente `HistorialServicios` (lista expandible) reutilizado por cliente y taller.
+- [x] Pantalla `cliente/DetalleVehiculo` (encabezado + orden en curso + historial).
+- [x] Pantalla `taller/HistorialVehiculo`.
+- [x] Buscador por placa en `taller/Inicio`.
 - [ ] Probar criterios de aceptación.

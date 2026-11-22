@@ -43,6 +43,9 @@ Una aplicación web con acceso por rol donde:
 | F06 | Crear orden de servicio | Empleado, Administrador | Órdenes |
 | F07 | Actualizar estatus de orden | Empleado, Administrador | Órdenes |
 | F08 | Consultar historial del vehículo | Todos | Historial |
+| F09 | Asignar órdenes a un mecánico | Administrador, Empleado | Órdenes |
+| F10 | Inventario de refacciones | Empleado, Administrador (el cliente ve las piezas usadas, sin costos) | Inventario |
+| F11 | Facturación (factura simple imprimible) y mano de obra | Cliente (pide y ve su factura), Empleado, Administrador (capturan la mano de obra y ven las facturas) | Facturación |
 
 Cada feature tiene su spec en `specs/features/`.
 
@@ -53,11 +56,11 @@ JavaScript · React (Vite) · Tailwind CSS · Supabase (Auth + PostgreSQL + RLS)
 ## Funcionalidades futuras (fuera del MVP)
 
 - Notificaciones por correo o WhatsApp cuando cambia el estatus de la orden.
-- Cotización con desglose de refacciones y mano de obra.
+- Cotización con desglose de refacciones y mano de obra (el costo de las refacciones ya existe en F10 y la mano de obra se captura en F11; la cotización previa con aprobación del cliente sigue fuera del MVP).
+- Timbrado CFDI con un PAC (la factura de F11 es un documento simple, no un Comprobante Fiscal Digital por Internet).
 - Subir fotos del vehículo al recibirlo.
 - Recuperación de contraseña por correo.
 - Reportes (servicios por mes, mecánico con más órdenes).
-- Asignar una orden a un mecánico específico.
 
 ## Supuestos (validados)
 
@@ -65,9 +68,9 @@ Estos puntos no vienen en la propuesta original; fueron validados y son decision
 
 1. **Horario del taller:** lunes a viernes de 08:00 a 18:00 y sábado de 08:00 a 14:00. Domingo cerrado.
 2. **Bloques de cita:** de 1 hora.
-3. **Capacidad:** máximo **3 citas por bloque** (número de bahías). Es el valor que define "disponibilidad" y evita traslapes.
+3. **Capacidad:** máximo **3 citas por bloque** (3 lugares simultáneos; las citas no guardan bahía, solo cuentan por hora). Es el valor que define "disponibilidad" y evita traslapes.
    - **Zona horaria:** fija, `America/Tijuana`, para validar horarios y fechas.
-4. Todo el que se registra entra como **cliente**. El administrador convierte a un usuario en **empleado** (F02) cambiándole el rol. Así no se necesita crear cuentas ajenas desde el frontend (en Supabase eso exige la llave `service_role`, que nunca debe ir en el navegador). El primer administrador se asigna a mano en el panel de Supabase.
+4. Todo el que se registra entra como **cliente**. El administrador convierte a un usuario en **empleado** (F02) cambiándole el rol, ya sea buscándolo por correo o creándole la cuenta desde la pantalla de Empleados (Q30: se registra con un cliente Supabase secundario y luego se cambia el rol con `cambiar_rol`; no se usa la llave `service_role`, que nunca debe ir en el navegador). El primer administrador se asigna a mano en el panel de Supabase.
 5. Un vehículo pertenece a un solo cliente. La placa es única en el sistema.
 6. El historial (F08) se forma con las órdenes de servicio del vehículo; no es una tabla aparte que se llene a mano.
 
@@ -88,5 +91,8 @@ specs/
     ├── F05-gestionar-citas.md
     ├── F06-crear-orden.md
     ├── F07-actualizar-estatus-orden.md
-    └── F08-historial-vehiculo.md
+    ├── F08-historial-vehiculo.md
+    ├── F09-asignar-ordenes.md
+    ├── F10-inventario.md
+    └── F11-facturacion.md
 ```

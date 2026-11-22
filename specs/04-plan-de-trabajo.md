@@ -29,7 +29,7 @@ F02 va al final porque, si falta tiempo, el rol de empleado se puede asignar a m
 6. Si algo cambió, actualizar la spec
 ```
 
-Además de las pruebas manuales, `supabase/tests.sql` reúne pruebas de RLS (cliente ajeno, cambio de `rol` desde consola, update directo de `ordenes.estatus`) y de capacidad (4 clientes al mismo bloque: el 4.º es rechazado).
+Además de las pruebas manuales, `supabase/tests.sql` reúne pruebas de RLS (cliente ajeno, cambio de `rol` desde consola, update directo de `ordenes.estatus`) y de capacidad (4 clientes al mismo bloque: el 4.º es rechazado). Pasó completo contra la base real (14 grupos; F09, F10 y F11 agregan los grupos 15, 16 y 17, pendientes de ejecutar: columnas y RLS, capacidad de 3 por bloque, domingo/fechas pasadas/segunda cita activa, cancelar con menos de 1 h, cancelación automática a 15 min, `crear_orden`, `avanzar_estatus_orden`, `cambiar_rol`/`cambiar_activo`, usuario desactivado y `anon` sin acceso).
 
 **Preparación de SQL:** se aplica a mano en el SQL Editor de Supabase, en el orden `schema.sql` → `functions.sql` → `policies.sql` → `seed.sql` (archivos re-ejecutables). Se desactiva "Confirm email" en Auth y se habilita `pg_cron`.
 
@@ -59,7 +59,7 @@ Además de las pruebas manuales, `supabase/tests.sql` reúne pruebas de RLS (cli
 | 15:45 – 17:00 | **F02** Gestión de empleados | Criterios F02 ✔ |
 | 17:00 – 18:30 | Prueba completa del flujo con los 3 roles (ver abajo); corregir errores | Flujo completo sin errores |
 | 18:30 – 19:30 | Crear desde `/registro` las 4 cuentas demo (admin, empleado, cliente1, cliente2); `seed.sql` (busca las cuentas por correo, asigna roles, inserta vehículos, citas, órdenes y bitácora); `supabase/tests.sql`; detalles de Tailwind (responsivo, estados vacíos) | |
-| 19:30 – 20:30 | README (instalación, variables, cuentas demo y sus contraseñas); actualizar specs y **regenerar el documento de metodología** concatenando las specs | Documento regenerado |
+| 19:30 – 20:30 | README (instalación, variables, cuentas demo); actualizar specs y **regenerar el documento de metodología** concatenando las specs | Documento regenerado |
 | 20:30 – 21:30 | **Colchón** para imprevistos. Dentro de este bloque: despliegue (~20 min): repositorio público en GitHub (`.env.local` en `.gitignore`, `.env.example` en el repo), proyecto en Vercel con las variables `VITE_*` y `vercel.json` con rewrite SPA | App abre en la URL de Vercel y el login funciona |
 | 21:30 – 22:00 | Entrega | Entregado antes de las 22:00 |
 
@@ -91,16 +91,21 @@ Recortar en este orden (sin tocar el flujo principal):
 
 ## Avance
 
+**Spec**, **SQL** y **Pantallas** están listos en las features F01–F08; F09 (y la ampliación Q30 de F02), F10 y F11 tienen la spec y el SQL escritos, pendientes de ejecutar en Supabase y de las pantallas. **Criterios** muestra los criterios de aceptación marcados `[x]` en cada spec (los demás esperan prueba manual en navegador, ver al final).
+
 | Feature | Spec | SQL | Pantallas | Criterios |
 |---|---|---|---|---|
-| F01 | ✔ | ☐ | ☐ | ☐ |
-| F02 | ✔ | ☐ | ☐ | ☐ |
-| F03 | ✔ | ☐ | ☐ | ☐ |
-| F04 | ✔ | ☐ | ☐ | ☐ |
-| F05 | ✔ | ☐ | ☐ | ☐ |
-| F06 | ✔ | ☐ | ☐ | ☐ |
-| F07 | ✔ | ☐ | ☐ | ☐ |
-| F08 | ✔ | ☐ | ☐ | ☐ |
+| F01 | ✔ | ✔ | ✔ | 4/12 |
+| F02 | ✔ | ✔ | ✔ | 7/9 |
+| F03 | ✔ | ✔ | ✔ | 5/10 |
+| F04 | ✔ | ✔ | ✔ | 9/12 |
+| F05 | ✔ | ✔ | ✔ | 6/12 |
+| F06 | ✔ | ✔ | ✔ | 7/11 |
+| F07 | ✔ | ✔ | ✔ | 7/10 |
+| F08 | ✔ | ✔ | ✔ | 2/6 |
+| F09 | ✔ | ☐ | ☐ | 0/14 |
+| F10 | ✔ | ☐ | ☐ | 0/20 |
+| F11 | ✔ | ✔ | ☐ | 0/22 |
 
 ## Registro de cambios
 
@@ -134,3 +139,69 @@ Decisiones aplicadas el 21/11/2026.
 | Q24 | 21/11/2026 | Nueva columna `citas.cancelada_por` (`cliente`/`taller`/`sistema`) y sus etiquetas en pantalla. |
 | Q25 | 21/11/2026 | El taller puede cancelar una cita en cualquier momento antes de que se cree la orden. |
 | Q26 | 21/11/2026 | Se mantiene "desde mañana hasta 30 días" para agendar y reprogramar. |
+| Q27 | 21/11/2026 | Contraseña mínima de 8 caracteres (formulario + Supabase Auth). |
+| Q28 | 21/11/2026 | Diseño: dirección visual «Manual de servicio» elegida con Impeccable; el sistema está en `DESIGN.md`; la agenda es una retícula hora × 3 lugares (sin rótulo de bahía porque las citas no guardan bahía); el avance de orden se muestra como 5 llamadas numeradas. |
+| Q29 | 21/11/2026 | Demo: el seed llena el siguiente día hábil (bloque lleno a las 10:00). |
+| Q30 | 21/11/2026 | F02: el admin crea cuentas de empleado desde Empleados (nombre, correo, teléfono, contraseña temporal ≥ 8) con un cliente Supabase secundario + `cambiar_rol`; se conserva "buscar por correo y hacer empleado". |
+| Q31 | 21/11/2026 | F09: solo el mecánico asignado y el admin avanzan estatus y guardan notas de una orden; los demás empleados la ven sin editar. Lo valida la BD (`avanzar_estatus_orden` y RLS `ordenes_update`). |
+| Q32 | 21/11/2026 | F09: el admin asigna y reasigna mientras la orden esté abierta (`asignar_orden`); si crea la orden un empleado queda asignada a él, si la crea el admin elige mecánico (opcional); una orden sin asignar solo la edita el admin; cada empleado ve "Mis trabajos". |
+| Q33 | 21/11/2026 | F09: el cliente ve solo el nombre del mecánico asignado a su vehículo (`nombre_mecanico`). |
+| Q34 | 21/11/2026 | F10: admin y empleados gestionan todo el inventario de refacciones (alta, edición, entradas, ajustes y desactivar). |
+| Q35 | 21/11/2026 | F10: las piezas se ligan a las órdenes; al usarlas se descuentan del stock y no se puede usar más de lo que hay (`usar_pieza_en_orden`, con lock de la pieza). |
+| Q36 | 21/11/2026 | F10: cada pieza tiene costo en MXN (2 decimales); la orden muestra subtotales y total de refacciones y copia el costo al usarla (`costo_unitario`). |
+| Q37 | 21/11/2026 | F10: stock mínimo por pieza con alerta "Bajo stock" (existencias ≤ mínimo y > 0) y "Agotado" (0); alerta en el inicio del taller. |
+| Q38 | 21/11/2026 | F10: historial de movimientos (`entrada`, `salida`, `devolucion`, `ajuste` con motivo obligatorio) con quién y cuándo; `existencias` solo cambia por funciones y siempre es la suma de los movimientos. |
+| Q39 | 21/11/2026 | F10: la compatibilidad con vehículos es texto libre (ej. "Nissan Versa 2012–2019"), buscable. |
+| Q40 | 21/11/2026 | F10: agregar o quitar piezas de una orden lo hace el mecánico asignado o el admin, solo con la orden no entregada (misma regla de F09, helper `_validar_edicion_orden`). |
+| Q41 | 21/11/2026 | F10: el cliente ve en su historial las piezas usadas y sus cantidades, sin costos (`piezas_usadas`). Las piezas no se borran: se desactivan. |
+| Q42 | 21/11/2026 | F10: el inventario se filtra por marca y modelo común (catálogo en `utils/catalogoVehiculos.js`, búsqueda en `compatibilidad`), con la selección en la URL. |
+| Q43 | 21/11/2026 | F10: al agregar refacciones a una orden se proponen primero las compatibles con la marca/modelo del vehículo, con opción "Ver todas las piezas". |
+| Q44 | 21/11/2026 | F11: factura simple imprimible / PDF (no CFDI): folio, datos fiscales del cliente, conceptos, subtotal, IVA 16 % y total, con la leyenda "Este documento no es un Comprobante Fiscal Digital por Internet (CFDI)." |
+| Q45 | 21/11/2026 | F11: conceptos = refacciones usadas (cantidad × `costo_unitario`) + "Mano de obra" que el taller captura en la orden (`ordenes.mano_obra`); IVA 16 % sobre el subtotal, redondeado a 2 decimales. |
+| Q46 | 21/11/2026 | F11: el cliente pide la factura solo con la orden `entregado`; una por orden; se genera al pedirla (`solicitar_factura`) y sus conceptos quedan congelados. |
+| Q47 | 21/11/2026 | F11: descripción del trabajo para el empleado: en la agenda se ve el motivo de la cita; en las órdenes, el resumen es el diagnóstico si existe y, si no, el motivo de la cita ("Sin descripción" si no hay ninguno). Sin campos nuevos. |
+| Q48 | 21/11/2026 | F07/F11: para pasar a `entregado` la orden debe tener mano de obra capturada (≥ 0): "Captura la mano de obra antes de marcar como entregado." |
+| Q49 | 21/11/2026 | F11: emisor de demostración "TallerApp · Taller de demostración", RFC genérico XAXX010101000, CP 22000 (Tijuana), marcado como datos de demostración. |
+| Q50 | 21/11/2026 | F11: los datos fiscales del cliente se precargan desde su última factura; no se guardan en el perfil. |
+| Q51 | 21/11/2026 | Agenda del taller con vista por día y por mes (admin y empleado). |
+| Q52 | 21/11/2026 | Endurecimiento de seguridad (cabeceras HTTP, CSP, restricciones de longitud/formato en BD). |
+
+## Pruebas realizadas
+
+- **`supabase/tests.sql`:** pasó completo contra la base real (14 grupos).
+- **QA de extremo a extremo (41/41 OK)** con las mismas llamadas de los `services`, contra la base real: login de los 4 roles y perfil; vehículos (listar, crear, placa repetida rechazada, `update` de kilometraje rechazado, editar marca); bloques disponibles, agendar cita y "Mis citas"; agenda del taller con cliente y vehículo, confirmar y reprogramar; cancelación del cliente con anticipación; crear orden desde la cita de hoy (cita `atendida`, kilometraje y bitácora), notas, avance hasta `entregado` y conflicto de estatus esperado; historial del vehículo; administración de empleados (listar, buscar por correo, hacer empleado y revertir, desactivar con bloqueo inmediato y reactivar); un cliente no puede confirmar una cita.
+- **Revisión visual** (escritorio y celular): login, inicio del cliente, agendar cita, inicio del taller, agenda del taller con bloque lleno y detalle de orden.
+
+## Pendiente de prueba manual
+
+Sin verificar todavía en navegador por una persona; sus criterios quedan sin marcar en las specs:
+
+- [ ] F01: registro de un cliente nuevo desde `/registro` (queda en `/cliente`, sin confirmar correo) y rechazo de correo repetido.
+- [ ] F01: contraseñas distintas bloquean el registro; credenciales incorrectas muestran el mensaje genérico.
+- [ ] F01: recargar la página no pierde la sesión.
+- [ ] F01: "Salir" cierra la sesión y regresa a `/login`.
+- [ ] F01: un cliente que escribe `/taller` en la URL ve "No tienes permiso".
+- [ ] F02: el administrador no ve botones para modificarse a sí mismo; el nuevo empleado llega a `/taller` al volver a entrar.
+- [ ] F03: la placa "abc-123" se normaliza a "ABC123" en el formulario.
+- [ ] F03: mensajes de validación (campos vacíos, año fuera de rango, kilometraje negativo) y botón "Agregar vehículo" desde el inicio.
+- [ ] F04: aviso de cliente sin vehículos; domingos y fechas pasadas no seleccionables; cita confirmada de un día anterior como "No se presentó".
+- [ ] F05: vista por mes de la agenda (Día | Mes, conteos, "hora llena", domingos cerrados, tocar un día abre la vista Día, "Ver mes", celular sin scroll horizontal).
+- [ ] F05: filtro por estatus; reprogramar rechaza fechas fuera de rango; "Crear orden" solo en citas confirmadas de hoy; citas canceladas/atendidas sin botones; una cita confirmada no se cancela sola.
+- [ ] F06: orden directa por placa y aviso de cita futura con "Cancelar cita"; crear orden de una cita de hoy cuya hora ya pasó; el cliente ve "Recibido" en su vehículo.
+- [ ] F07: lista de órdenes abiertas con filtros; solo aparece el botón del siguiente estatus; el cliente ve la barra de progreso sin poder editarla.
+- [ ] F08: orden de los servicios (más reciente primero), mensaje de vehículo sin servicios, "Vehículo no encontrado" al cambiar el id en la URL y búsqueda por placa en el taller.
+- [ ] F02 (Q30): crear cuenta de empleado desde `/admin/empleados` (la sesión del admin no cambia, el empleado entra con la contraseña temporal, correo repetido y validaciones del formulario).
+- [ ] F09: ejecutar en Supabase `schema.sql`, `functions.sql`, `policies.sql`, `seed.sql` y `tests.sql` (grupo 15) en ese orden.
+- [ ] F09: el empleado que crea una orden la ve en "Mis trabajos"; el admin elige mecánico al crear y asigna, reasigna y quita desde el detalle.
+- [ ] F09: un empleado no asignado ve la orden en solo lectura (sin avanzar ni guardar notas) con el aviso correcto; "Sin asignar" y el aviso del admin en `/taller`.
+- [ ] F09: el cliente ve "Mecánico: {nombre}" en su vehículo con orden en curso.
+- [ ] F10: ejecutar en Supabase `schema.sql`, `functions.sql`, `policies.sql`, `seed.sql` y `tests.sql` (grupo 16) en ese orden.
+- [ ] F10: `/taller/inventario` con búsqueda por compatibilidad ("Versa"), filtros "Bajo stock y agotadas" e "Inactivas", estados y fichas en celular; "Nueva pieza" con código repetido.
+- [ ] F10: detalle de pieza: registrar entrada, ajustar (motivo obligatorio), editar, desactivar/activar y tabla de movimientos con enlace a la orden.
+- [ ] F10: en el detalle de una orden, agregar y quitar refacciones (stock, subtotales, total, "No hay suficientes existencias: quedan {n}."); solo lectura para no asignados y órdenes entregadas.
+- [ ] F11: ejecutar en Supabase `schema.sql`, `functions.sql`, `policies.sql`, `seed.sql` y `tests.sql` (grupo 17) en ese orden.
+- [ ] F11: `taller/DetalleOrden` captura "Mano de obra (MXN)" con "Guardar notas" y no deja entregar sin ella; muestra "Total estimado (sin IVA)" y "Ver factura {folio}".
+- [ ] F11: el cliente pide factura de la orden entregada sin factura (formulario con validaciones, precarga desde su última factura), ve "Ver factura {folio}" y "Mis facturas".
+- [ ] F11: la factura imprimible (`/cliente/facturas/:id` y `/taller/facturas/:id`) se ve limpia al imprimir o guardar como PDF (hoja carta, sin menú ni botones) y muestra la leyenda de que no es CFDI.
+- [ ] F11 (Q47): columna/fila "Trabajo" en `/taller/ordenes`, "Mis trabajos" y fichas del inicio; el motivo de la cita se ve en la agenda también en celular.
+- [ ] F10: alerta de bajo stock en `/taller` con enlace al filtro; el cliente ve "Refacciones" sin costos en su vehículo y en el historial.
