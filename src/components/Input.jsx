@@ -1,9 +1,12 @@
 import { useId } from 'react'
+import MensajeError from './MensajeError'
 
-export default function Input({ label, error, className = '', id, ...resto }) {
+// `contador`: muestra "n/máximo" bajo el campo (requiere maxLength).
+export default function Input({ label, error, className = '', id, contador = false, ...resto }) {
   const generado = useId()
   const inputId = id ?? generado
   const errorId = `${inputId}-error`
+  const largo = String(resto.value ?? '').length
   return (
     <div className={className}>
       <label htmlFor={inputId} className="etiqueta mb-1.5 block text-tinta">
@@ -16,23 +19,12 @@ export default function Input({ label, error, className = '', id, ...resto }) {
         className="campo"
         {...resto}
       />
-      {error && (
-        <p id={errorId} className="mt-1.5 flex items-start gap-1.5 text-sm font-bold text-cancelada">
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 20 20"
-            className="mt-0.5 h-4 w-4 shrink-0"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.75"
-            strokeLinecap="square"
-          >
-            <circle cx="10" cy="10" r="8" />
-            <path d="M10 5.5v5.5M10 14v.5" />
-          </svg>
-          <span>{error}</span>
+      {error && <MensajeError id={errorId}>{error}</MensajeError>}
+      {contador && resto.maxLength ? (
+        <p className="mt-1.5 text-sm text-tenue">
+          {largo}/{resto.maxLength}
         </p>
-      )}
+      ) : null}
     </div>
   )
 }
