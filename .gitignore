@@ -28,3 +28,6 @@ dist-ssr
 
 # Configuración local de Claude Code
 .claude/settings.local.json
+
+# Captura local temporal
+public/__shot.html

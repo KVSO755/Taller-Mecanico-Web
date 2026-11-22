@@ -24,13 +24,31 @@ colors:
 typography:
   titulo-pagina:
     fontFamily: "Barlow Condensed, Barlow, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "2.75rem"
+    fontSize: "2.25rem"
     fontWeight: 700
     lineHeight: 1.1
     letterSpacing: "0.01em"
+  titulo-pagina-movil:
+    fontFamily: "Barlow Condensed, Barlow, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.75rem"
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: "0.01em"
+  marca:
+    fontFamily: "Barlow Condensed, Barlow, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "2rem"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "0.02em"
+  progreso-etiqueta:
+    fontFamily: "Barlow Condensed, Barlow, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "11px"
+    fontWeight: 700
+    lineHeight: "12px"
+    letterSpacing: "0.08em"
   titulo-seccion:
     fontFamily: "Barlow Condensed, Barlow, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "1.375rem"
+    fontSize: "1.125rem"
     fontWeight: 700
     lineHeight: 1.25
     letterSpacing: "0.04em"
@@ -188,8 +206,8 @@ Paleta de papel de taller: fondo hueso, tinta casi negra, un cobalto de uniforme
 **Character:** Condensada de rotulación de chasis para todo lo que se identifica (títulos, placas, folios, etiquetas) y un humanista neutro para leer. Solo se cargan los pesos 400 y 700, autoalojados; todo número es tabular (`font-variant-numeric: tabular-nums` en body).
 
 ### Hierarchy
-- **Título de página** (`.titulo-pagina`, 700, 2rem / 2.75rem desde 1024px, 1.1, +0.01em): un h1 por pantalla, dentro de `EncabezadoPagina`; la fecha va en tipo oración (Barlow 1rem, `tenue`) al lado del título en escritorio, alineada a la línea base, y debajo en celular, nunca encima.
-- **Título de sección** (`.titulo-seccion`, 700, 1.375rem, 1.25, +0.04em, mayúsculas): h2 como "Agenda de hoy", "Órdenes abiertas".
+- **Título de página** (`.titulo-pagina`, 700, 1.75rem / 2.25rem desde 1024px, 1.1, +0.01em): un h1 por pantalla, dentro de `EncabezadoPagina`; la fecha va en tipo oración (Barlow 1rem, `tenue`) al lado del título en escritorio, alineada a la línea base, y debajo en celular, nunca encima.
+- **Título de sección** (`.titulo-seccion`, 700, 1.125rem, 1.25, +0.04em, mayúsculas): h2 como "Agenda de hoy", "Órdenes abiertas".
 - **Placa / folio** (`.placa`, 700, 1.5–2.25rem según contexto: 2xl hora, 3xl placa en celda, 4xl placa en ficha; interlineado 1; +0.04em): la pieza ancla de cada ficha; también horas de la retícula.
 - **Etiqueta** (`.etiqueta`, 700, 12px/16px, +0.12em, mayúsculas): etiquetas de campo, encabezados de tabla, estados, folios chicos, "Libre", "Lleno". Es dato corto y rotulado, no un sobretítulo decorativo.
 - **Cuerpo** (400, 1rem, 1.5): texto corriente; negrita 700 para nombre del cliente y datos clave; texto secundario en `tenue`. Mensajes de alerta 14px.
@@ -201,9 +219,9 @@ Paleta de papel de taller: fondo hueso, tinta casi negra, un cobalto de uniforme
 
 ## Layout
 
-Shell de dos zonas: riel cobalto fijo de 240px a la izquierda desde 1024px (`lg`); debajo, barra superior cobalto pegajosa de 56px con menú desplegable de ancho completo. El contenido se centra en un contenedor máximo de 1280px con relleno de 16px (celular), 24px (sm) y 32px (lg).
+Shell de dos zonas: riel cobalto fijo de 240px a la izquierda desde 1024px (`lg`); debajo, barra superior cobalto pegajosa de 56px con menú desplegable de ancho completo. El contenido se centra en un contenedor máximo de 1360px con relleno de 16px (celular), 24px (sm y lg).
 
-Espaciado en múltiplos de 4px sobre la escala de Tailwind: separación entre secciones de 24–32px (`space-y-6`, `gap-8`), entre fichas de 16px, relleno de ficha de 16px, celdas de cita de 12px. Objetivos táctiles mínimos de 44px en celular y 40px desde 768px (botones, campos, ítems de menú de 48px).
+Espaciado en múltiplos de 4px sobre la escala de Tailwind: separación entre secciones de 20–24px (`space-y-5`, `space-y-6`), entre fichas de 12px (`.lista-fichas`), relleno de ficha de 12px (14px desde `md`), celdas de cita de 10px, celdas de tabla de 8px 12px. La densidad es de herramienta de trabajo: placas de 24px en fichas y celdas (`text-2xl`), 28px/36px en encabezados de detalle, 18–20px en tablas. Objetivos táctiles mínimos de 44px en celular y 40px desde 768px (botones, campos, ítems de menú de 48px).
 
 Encabezado de pantalla (`EncabezadoPagina`): título, fecha opcional y acciones en una fila que envuelve; la fecha queda al lado del título desde 768px y debajo en celular.
 
@@ -225,7 +243,7 @@ Esquinas casi rectas: 2px en botones, campos, fichas, alertas y etiquetas de est
 ## Components
 
 ### Botones
-Rotulados en Barlow Condensed 700, 14px, mayúsculas, +0.12em; altura 44px (40px desde `md`), relleno horizontal 20px, radio 2px, borde de 1px.
+Rotulados en Barlow Condensed 700, 14px, mayúsculas, +0.12em; altura 44px (40px desde `md`), relleno horizontal 20px; variante `compacto` para celdas y filas densas: 44px en celular, 36px desde `md`, relleno 12px, radio 2px, borde de 1px.
 - **Primario:** relleno cobalto, texto blanco; hover y activo `cobalto-oscuro`.
 - **Secundario:** blanco con borde tinta; hover `neutro-suave`, activo `linea`.
 - **Peligro:** relleno `cancelada`, texto blanco; hover `cancelada-oscuro`.
@@ -252,12 +270,12 @@ Caja con borde 1px y tinte del tipo (error, éxito, info), icono de 20px de traz
 Riel (escritorio) y panel desplegable (celular) sobre cobalto. Ítems de 48px, texto blanco 16px, relleno 24px; el activo lleva tinte blanco al 12% y cuadrito amarillo de 8px; hover blanco al 8%. Marca "TallerApp" en Barlow Condensed 700 de 32px sobre el rol en `cobalto-claro`; usuario y botón "Salir" (claro) al pie del riel.
 
 ### ProgresoOrden (componente firma)
-Cinco llamadas numeradas (Recibido, Diagnóstico, Reparación, Listo, Entregado) sobre una línea guía de 2px (`linea`). El tramo completado se rellena en tinta, proporcional (`--p` = paso actual / 4). Paso completado: círculo 28px, borde y relleno tinta, número blanco. Paso actual: círculo de 32px, relleno `amarillo-llamada`, borde tinta de 2px, número 18px. Pendiente: círculo 28px, borde `linea`, relleno fondo, número `tenue`. Es una lista ordenada con `aria-current="step"` y texto oculto "(completado) / (paso actual) / (pendiente)". Responde al ancho del propio contenedor (container query): desde 360px, cinco columnas con la línea horizontal y etiquetas cortas; por debajo, lista vertical con etiquetas completas y línea a la izquierda.
+Cinco llamadas numeradas (Recibido, Diagnóstico, Reparación, Listo, Entregado) sobre una línea guía de 2px (`linea`). El tramo completado se rellena en tinta, proporcional (`--p` = paso actual / 4). Paso completado: círculo 22px, borde y relleno tinta, número blanco. Paso actual: círculo de 24px, relleno `amarillo-llamada`, borde tinta de 2px, número 14px. Pendiente: círculo 22px, etiquetas de 11px, borde `linea`, relleno fondo, número `tenue`. Es una lista ordenada con `aria-current="step"` y texto oculto "(completado) / (paso actual) / (pendiente)". Responde al ancho del propio contenedor (container query): desde 360px, cinco columnas con la línea horizontal y etiquetas cortas; por debajo, lista vertical con etiquetas completas y línea a la izquierda.
 
 ### AgendaRejilla (componente firma)
 Retícula hora × 3 lugares (capacidad de 3 citas por bloque de 1 hora; las columnas no llevan rótulo de bahía porque las citas no guardan bahía y se llenan en orden). Lista ordenada con regla superior de 2px tinta; cada hora es una fila con divisor de 1px y una columna de 72px con la hora en `.placa` 2xl. Hay tres formas de fila:
 - **Hora con citas:** a la derecha, tres celdas iguales. Celda ocupada: blanco con borde 1px `linea` y relleno de 12px (placa grande, cliente y motivo, estado con texto, número de cita). Celda libre restante: borde punteado `linea`, "Libre" en `.etiqueta` `tenue` (mínimo 96px de alto). Si las tres están ocupadas, etiqueta "Lleno" sólida tinta con texto blanco bajo la hora.
-- **Hora sin citas activas:** una sola franja punteada `linea` de 44px a todo el ancho con "Libre · 3 lugares" centrado en `.etiqueta` `tenue`, en lugar de tres celdas vacías.
+- **Hora sin citas activas:** una sola franja punteada `linea` de 36px (44px en celular) a todo el ancho con "Libre · 3 lugares" centrado en `.etiqueta` `tenue`, en lugar de tres celdas vacías.
 - **Día sin citas:** mensaje en `tenue` y una línea tenue por hora ("· Libre · 3 lugares"), sin celdas.
 
 Acciones de celda (en Citas del taller): la acción principal (Confirmar o Crear orden) va primero, a ancho completo; Reprogramar (secundario) y Cancelar (peligro) van debajo en dos columnas iguales, ancladas al fondo de la celda. En celular la hora es un encabezado con sus citas apiladas y una sola línea punteada "Libre · N lugares".
