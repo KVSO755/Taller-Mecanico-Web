@@ -165,6 +165,7 @@ Decisiones aplicadas el 21/11/2026.
 | Q50 | 21/11/2026 | F11: los datos fiscales del cliente se precargan desde su última factura; no se guardan en el perfil. |
 | Q51 | 21/11/2026 | Agenda del taller con vista por día y por mes (admin y empleado). |
 | Q52 | 21/11/2026 | Endurecimiento de seguridad (cabeceras HTTP, CSP, restricciones de longitud/formato en BD). |
+| Q53 | 22/11/2026 | F01: recuperar contraseña por correo (`/recuperar` → enlace → `/restablecer`), para todos los roles; mensaje igual exista o no el correo; al guardar va a su inicio. Correo integrado de Supabase por ahora (SMTP propio para clientes reales). Sale de "fuera del MVP". |
 
 ## Pruebas realizadas
 

@@ -11,6 +11,8 @@ import LimiteError from "./components/LimiteError";
 // Páginas cargadas por sección (auth, cliente, taller, admin).
 const Login = lazy(() => import("./pages/auth/Login"));
 const Registro = lazy(() => import("./pages/auth/Registro"));
+const Recuperar = lazy(() => import("./pages/auth/Recuperar"));
+const Restablecer = lazy(() => import("./pages/auth/Restablecer"));
 const InicioCliente = lazy(() => import("./pages/cliente/Inicio"));
 const NuevoVehiculo = lazy(() => import("./pages/cliente/NuevoVehiculo"));
 const DetalleVehiculo = lazy(() => import("./pages/cliente/DetalleVehiculo"));
@@ -66,6 +68,8 @@ export default function App() {
             <Route path="/" element={<Raiz />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
+            <Route path="/recuperar" element={<Recuperar />} />
+            <Route path="/restablecer" element={<Restablecer />} />
 
             <Route element={<RutaProtegida roles={["cliente"]} />}>
               <Route element={<Layout />}>

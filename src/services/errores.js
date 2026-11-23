@@ -3,6 +3,8 @@ const MENSAJES_DEFECTO = {
   registro: 'No se pudo crear la cuenta. Intenta de nuevo.',
   cargar: 'No se pudieron cargar los datos. Intenta de nuevo.',
   guardar: 'No se pudo guardar. Intenta de nuevo.',
+  recuperar: 'No se pudo enviar el correo. Intenta de nuevo.',
+  contrasena: 'No se pudo cambiar la contraseña. Intenta de nuevo.',
 }
 
 export const MENSAJE_RED = 'No se pudo conectar. Revisa tu internet e intenta de nuevo.'
@@ -36,6 +38,15 @@ export function traducirError(error, contexto = 'guardar') {
   }
   if (code === 'weak_password' || /Password should be at least/i.test(msg)) {
     return 'La contraseña debe tener al menos 8 caracteres.'
+  }
+  if (code === 'same_password' || /should be different from the old password/i.test(msg)) {
+    return 'La contraseña nueva debe ser distinta a la anterior.'
+  }
+  if (code === 'over_email_send_rate_limit' || /rate limit/i.test(msg) || error?.status === 429) {
+    return 'Se hicieron demasiados intentos. Espera unos minutos e intenta de nuevo.'
+  }
+  if (code === 'session_not_found' || code === 'no_authorization' || /auth session missing/i.test(msg)) {
+    return 'El enlace no es válido o ya venció. Pide uno nuevo.'
   }
   if (code === 'P0001' && msg) return msg
 

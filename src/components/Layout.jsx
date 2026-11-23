@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router'
 import { useAuth } from '../context/AuthContext'
 import { rutaInicioPorRol } from '../routes/rutaInicio'
+import Alerta from './Alerta'
 import Boton from './Boton'
 import LimiteError from './LimiteError'
 
@@ -79,7 +80,7 @@ function Marca({ rol }) {
 export default function Layout() {
   const { perfil, logout } = useAuth()
   const navigate = useNavigate()
-  const { pathname } = useLocation()
+  const { pathname, state } = useLocation()
   const [abierto, setAbierto] = useState(false)
   const botonRef = useRef(null)
   const enlaces = enlacesPorRol(perfil?.rol)
@@ -167,6 +168,12 @@ export default function Layout() {
 
       <main id="contenido" className="min-w-0 px-4 py-4 sm:px-6 lg:p-6">
         <div className="mx-auto w-full max-w-[1360px]">
+          {/* Aviso de un solo uso que llega en el state de la navegación (p. ej. contraseña actualizada). */}
+          {state?.aviso && (
+            <Alerta tipo="exito" className="mb-4">
+              {state.aviso}
+            </Alerta>
+          )}
           <LimiteError clave={pathname}>
             <Outlet />
           </LimiteError>

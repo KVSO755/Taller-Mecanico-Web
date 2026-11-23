@@ -59,7 +59,6 @@ JavaScript · React (Vite) · Tailwind CSS · Supabase (Auth + PostgreSQL + RLS)
 - Cotización con desglose de refacciones y mano de obra (el costo de las refacciones ya existe en F10 y la mano de obra se captura en F11; la cotización previa con aprobación del cliente sigue fuera del MVP).
 - Timbrado CFDI con un PAC (la factura de F11 es un documento simple, no un Comprobante Fiscal Digital por Internet).
 - Subir fotos del vehículo al recibirlo.
-- Recuperación de contraseña por correo.
 - Reportes (servicios por mes, mecánico con más órdenes).
 
 ## Supuestos (validados)

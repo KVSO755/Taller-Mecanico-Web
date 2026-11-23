@@ -7,6 +7,8 @@ Público
 ├── /                           Redirige según sesión y rol (a /login si no hay sesión)
 ├── /login                      Iniciar sesión               (F01)
 ├── /registro                   Registro de cliente          (F01)
+├── /recuperar                  Pedir enlace para recuperar la contraseña (F01)
+├── /restablecer                Crear contraseña nueva desde el enlace del correo (F01)
 └── (cualquier otra ruta)       Página no encontrada
 
 Cliente  (/cliente)

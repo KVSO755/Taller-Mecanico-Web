@@ -80,6 +80,11 @@ export default function Login() {
           onChange={(e) => setContrasena(e.target.value)}
           error={errores.contrasena}
         />
+        <p className="text-sm">
+          <Link to="/recuperar" className="enlace">
+            ¿Olvidaste tu contraseña?
+          </Link>
+        </p>
         <Boton type="submit" cargando={enviando} className="w-full">
           Entrar
         </Boton>

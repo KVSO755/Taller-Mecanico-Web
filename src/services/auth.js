@@ -19,6 +19,20 @@ export async function registrarse({ nombre, telefono, correo, contrasena }) {
   return data
 }
 
+// Manda el correo con el enlace a /restablecer. Supabase no avisa si el correo no existe.
+export async function enviarEnlaceRecuperacion(correo) {
+  const { error } = await supabase.auth.resetPasswordForEmail(correo, {
+    redirectTo: `${window.location.origin}/restablecer`,
+  })
+  if (error) throw error
+}
+
+// Requiere la sesión que abre el enlace del correo (o una sesión normal).
+export async function cambiarContrasena(nueva) {
+  const { error } = await supabase.auth.updateUser({ password: nueva })
+  if (error) throw error
+}
+
 export async function cerrarSesion() {
   const { error } = await supabase.auth.signOut()
   if (error) throw error

@@ -35,7 +35,7 @@ Producto genérico para cualquier taller pequeño, con nombre TallerApp. Su dife
 - Stack fijo: React 19 + Vite, Tailwind CSS v4, React Router 7, Supabase (Auth + PostgreSQL + RLS). Sin librerías de UI adicionales.
 - Interfaz en español (México). Toda pantalla de lista contempla cargando, con datos, vacía y error con "Reintentar".
 - Totalmente responsivo: cada pantalla debe funcionar completa en celular y en escritorio.
-- Fuera del MVP: notificaciones, cotizaciones, fotos, recuperación de contraseña, reportes, asignar orden a un mecánico.
+- Fuera del MVP: notificaciones, cotizaciones, fotos, reportes, asignar orden a un mecánico.
 
 ## Brand Commitments
 

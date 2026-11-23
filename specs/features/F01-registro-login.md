@@ -37,6 +37,22 @@ Cliente (registro e inicio de sesión). Empleado y administrador (solo inicio de
 
 Botón "Salir" en el menú → se cierra la sesión → regresa a `/login`.
 
+## Flujo — Recuperar contraseña (Q53)
+
+Disponible para todos los roles.
+
+1. En `/login` el usuario presiona "¿Olvidaste tu contraseña?" y llega a `/recuperar`.
+2. Escribe su correo y presiona "Enviar enlace". El sistema llama a `resetPasswordForEmail` con `redirectTo = {origen}/restablecer`.
+3. Siempre se muestra el mismo mensaje: "Si el correo está registrado, te enviamos un enlace para crear una contraseña nueva. Revisa tu bandeja y la carpeta de spam." (no se revela si el correo tiene cuenta).
+4. El enlace del correo abre `/restablecer`; Supabase identifica al usuario con el enlace y abre su sesión.
+5. Escribe la contraseña nueva y su confirmación y presiona "Guardar contraseña" (`updateUser({ password })`).
+6. El sistema lo lleva a su inicio (cliente → `/cliente`; empleado/admin → `/taller`) con el aviso "Tu contraseña se actualizó."
+
+Notas:
+- No hay cambios en la BD: lo maneja Supabase Auth. Una cuenta desactivada puede abrir el enlace, pero el sistema cierra la sesión con "Tu cuenta está desactivada. Contacta al taller." (igual que al iniciar sesión).
+- Si alguien abre `/restablecer` con una sesión ya abierta (sin enlace), puede cambiar su propia contraseña: equivale a "cambiar contraseña" estando dentro.
+- **Envío del correo:** se usa el correo integrado de Supabase. Sin un SMTP propio, Supabase solo envía a los correos de los miembros del equipo del proyecto y unos pocos por hora; las cuentas demo `@example.com` no reciben correos. Para clientes reales hay que configurar un SMTP propio en Supabase (Authentication → Emails → SMTP Settings).
+
 ## Validaciones
 
 - Nombre: obligatorio, mínimo 3 caracteres.
@@ -57,6 +73,9 @@ Botón "Salir" en el menú → se cierra la sesión → regresa a `/login`.
 | Usuario entra a una ruta de otro rol | Pantalla "No tienes permiso" con botón a su inicio. |
 | Usuario sin sesión entra a ruta privada | Redirige a `/login`. |
 | Ruta inexistente | Pantalla "Página no encontrada" (`NoEncontrado`) con enlace a su inicio. |
+| Recuperar: demasiados correos pedidos (límite de Supabase) | "Se hicieron demasiados intentos. Espera unos minutos e intenta de nuevo." |
+| Restablecer: enlace vencido, ya usado o sin sesión | "El enlace no es válido o ya venció. Pide uno nuevo." + enlace a `/recuperar`. |
+| Restablecer: contraseña igual a la anterior | "La contraseña nueva debe ser distinta a la anterior." |
 
 ## Resultado esperado
 
@@ -76,6 +95,9 @@ El usuario queda con sesión iniciada y ve únicamente el menú y las pantallas 
 - [x] Una cuenta desactivada no puede entrar, y si ya tenía sesión abierta, las consultas dejan de devolver datos.
 - [x] Un cliente que intenta `update perfiles set rol='admin'` desde la consola es rechazado (solo tiene permiso sobre `nombre` y `telefono`).
 - [ ] El registro inicia sesión sin pedir confirmar el correo.
+- [ ] En `/recuperar` se muestra el mismo mensaje exista o no el correo.
+- [ ] El enlace del correo abre `/restablecer`; al guardar una contraseña válida el usuario llega a su inicio con "Tu contraseña se actualizó." y puede entrar con ella.
+- [ ] Un enlace vencido o ya usado muestra "El enlace no es válido o ya venció. Pide uno nuevo."
 
 ## Tasks
 
@@ -97,4 +119,8 @@ El usuario queda con sesión iniciada y ve únicamente el menú y las pantallas 
 - [x] Pantalla `NoEncontrado` y ruta `/` que redirige según sesión y rol (`routes/rutaInicio.js`).
 - [x] Asignar rol `admin` a la primera cuenta desde el panel de Supabase.
 - [x] Crear desde `/registro` las 4 cuentas demo (admin, empleado, cliente1, cliente2) (sus contraseñas se entregan por separado, no van en el repo) (`seed.sql` las busca por correo y asigna roles).
+- [ ] En Supabase → Authentication → URL Configuration: *Site URL* = URL de producción y en *Redirect URLs* agregar `http://localhost:5173/restablecer` y `{URL de producción}/restablecer`.
+- [ ] (Opcional) Traducir la plantilla "Reset Password" en Authentication → Emails.
+- [x] `services/auth.js`: `enviarEnlaceRecuperacion` y `cambiarContrasena`.
+- [x] Pantallas `auth/Recuperar` y `auth/Restablecer`; enlace en `Login`; aviso de éxito en `Layout`.
 - [ ] Probar criterios de aceptación.

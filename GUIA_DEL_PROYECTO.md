@@ -103,7 +103,7 @@ src/
 
 | Archivo | Qué hace |
 |---|---|
-| `auth.js` | Iniciar sesión, registrarse, cerrar sesión |
+| `auth.js` | Iniciar sesión, registrarse, cerrar sesión, recuperar y cambiar contraseña |
 | `perfiles.js` | Perfil propio, empleados, crear cuenta de empleado, cambiar rol/activo |
 | `vehiculos.js` | Vehículos del cliente e historial del vehículo |
 | `citas.js` | Bloques disponibles, agendar, confirmar, reprogramar, cancelar, agenda por día/mes |
@@ -118,7 +118,7 @@ src/
 
 | Feature | Spec | Pantallas (`src/pages/`) | Componentes / servicios clave |
 |---|---|---|---|
-| **F01** Registro e inicio de sesión | `F01-registro-login.md` | `auth/Login.jsx`, `auth/Registro.jsx`, `SinPermiso.jsx`, `NoEncontrado.jsx` | `context/AuthContext.jsx`, `routes/RutaProtegida.jsx`, `components/Layout.jsx`, `PantallaAcceso.jsx`, `services/auth.js` |
+| **F01** Registro e inicio de sesión | `F01-registro-login.md` | `auth/Login.jsx`, `auth/Registro.jsx`, `auth/Recuperar.jsx`, `auth/Restablecer.jsx`, `SinPermiso.jsx`, `NoEncontrado.jsx` | `context/AuthContext.jsx`, `routes/RutaProtegida.jsx`, `components/Layout.jsx`, `PantallaAcceso.jsx`, `services/auth.js` |
 | **F02** Gestión de empleados | `F02-gestion-empleados.md` | `admin/Empleados.jsx` | `services/perfiles.js` |
 | **F03** Registrar vehículo | `F03-registrar-vehiculo.md` | `cliente/Inicio.jsx`, `cliente/NuevoVehiculo.jsx` | `components/FormVehiculo.jsx`, `utils/placa.js`, `services/vehiculos.js` |
 | **F04** Agendar cita | `F04-agendar-cita.md` | `cliente/NuevaCita.jsx`, `cliente/Citas.jsx` | `utils/horarios.js`, `services/citas.js` |
