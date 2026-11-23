@@ -1,7 +1,5 @@
 # Diario de decisiones
 
-> **Borrador para revisar.** Resume las decisiones del proyecto. El detalle completo (Q1–Q52) está en `specs/04-plan-de-trabajo.md` → "Registro de cambios". Ajústalo con tus palabras antes de entregar.
-
 Formato: **Decisión** · alternativas consideradas · **por qué**.
 
 ## Sábado 21 de noviembre de 2026
