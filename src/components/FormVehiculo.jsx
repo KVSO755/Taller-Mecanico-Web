@@ -1,20 +1,41 @@
 import { useState } from 'react'
 import { traducirError } from '../services/errores'
+import { MARCAS, MARCA_UNIVERSAL, modelosDe } from '../utils/catalogoVehiculos'
 import { LIMITES, MAX_KM, enfocarPrimerError, useCandado } from '../utils/formularios'
 import { normalizarPlaca, placaEscrita, placaValida } from '../utils/placa'
 import Alerta from './Alerta'
 import Boton from './Boton'
+import CampoSelect from './CampoSelect'
 import Input from './Input'
 
 const MENSAJE_GENERICO = 'No se pudo guardar. Intenta de nuevo.'
 
+// Opciones "no está en la lista": el usuario escribe el dato a mano.
+const OTRA_MARCA = 'Otra marca'
+const OTRO_MODELO = 'Otro modelo'
+const MARCAS_LISTA = MARCAS.filter((m) => m !== MARCA_UNIVERSAL)
+const nombresModelos = (marca) => modelosDe(marca).map((x) => x.nombre)
+
+// Estado inicial de los selects a partir del vehículo guardado (texto libre en la BD).
+// Solo se preselecciona si coincide exacto con el catálogo, para no cambiar el texto guardado.
+function seleccionInicial(marca = '', modelo = '') {
+  if (!marca) return { marcaSel: '', marcaTexto: '', modeloSel: '', modeloTexto: '' }
+  if (!MARCAS_LISTA.includes(marca)) {
+    return { marcaSel: OTRA_MARCA, marcaTexto: marca, modeloSel: '', modeloTexto: modelo }
+  }
+  if (!modelo || nombresModelos(marca).includes(modelo)) {
+    return { marcaSel: marca, marcaTexto: '', modeloSel: modelo, modeloTexto: '' }
+  }
+  return { marcaSel: marca, marcaTexto: '', modeloSel: OTRO_MODELO, modeloTexto: modelo }
+}
+
 // Formulario de vehículo. Modo creación (inicial vacío) o edición (`edicion`):
 // en edición la placa y el kilometraje son de solo lectura (decisión Q8).
+// Marca y modelo se eligen del catálogo; con "Otra marca" / "Otro modelo" se escriben a mano.
 // `onGuardar(datos)` debe devolver una promesa; si lanza, se muestra el error y se conservan los datos.
 export default function FormVehiculo({ inicial, edicion = false, onGuardar, onCancelar }) {
   const [placa, setPlaca] = useState(inicial?.placa ?? '')
-  const [marca, setMarca] = useState(inicial?.marca ?? '')
-  const [modelo, setModelo] = useState(inicial?.modelo ?? '')
+  const [sel, setSel] = useState(() => seleccionInicial(inicial?.marca ?? '', inicial?.modelo ?? ''))
   const [anio, setAnio] = useState(inicial?.anio != null ? String(inicial.anio) : '')
   const [km, setKm] = useState(inicial?.kilometraje != null ? String(inicial.kilometraje) : '')
   const [errores, setErrores] = useState({})
@@ -23,6 +44,16 @@ export default function FormVehiculo({ inicial, edicion = false, onGuardar, onCa
   const candado = useCandado()
 
   const anioMax = new Date().getFullYear() + 1
+  const marcaOtra = sel.marcaSel === OTRA_MARCA
+  const modeloOtro = marcaOtra || sel.modeloSel === OTRO_MODELO
+  const marca = marcaOtra ? sel.marcaTexto : sel.marcaSel
+  const modelo = modeloOtro ? sel.modeloTexto : sel.modeloSel
+
+  function cambiarMarca(valor) {
+    // Al cambiar de marca el modelo elegido ya no aplica.
+    setSel({ marcaSel: valor, marcaTexto: '', modeloSel: '', modeloTexto: '' })
+    setErrores((e) => ({ ...e, marca: undefined, modelo: undefined }))
+  }
 
   function validar() {
     const e = {}
@@ -37,10 +68,12 @@ export default function FormVehiculo({ inicial, edicion = false, onGuardar, onCa
       else if (Number(k) > MAX_KM) e.km = `El kilometraje no puede pasar de ${MAX_KM.toLocaleString('es-MX')} km.`
     }
     const m = marca.trim()
-    if (!m) e.marca = 'La marca es obligatoria.'
+    if (!sel.marcaSel) e.marca = 'Elige la marca.'
+    else if (!m) e.marca = 'Escribe la marca.'
     else if (m.length > LIMITES.marca) e.marca = `La marca no puede pasar de ${LIMITES.marca} caracteres.`
     const mo = modelo.trim()
-    if (!mo) e.modelo = 'El modelo es obligatorio.'
+    if (!modeloOtro && !sel.modeloSel) e.modelo = 'Elige el modelo.'
+    else if (!mo) e.modelo = 'Escribe el modelo.'
     else if (mo.length > LIMITES.modelo) e.modelo = `El modelo no puede pasar de ${LIMITES.modelo} caracteres.`
     const a = anio.trim()
     if (!a) e.anio = 'El año es obligatorio.'
@@ -78,6 +111,9 @@ export default function FormVehiculo({ inicial, edicion = false, onGuardar, onCa
     }
   }
 
+  const opcionesMarca = [...MARCAS_LISTA, OTRA_MARCA].map((m) => [m, null])
+  const opcionesModelo = sel.marcaSel ? [...nombresModelos(sel.marcaSel), OTRO_MODELO].map((m) => [m, null]) : []
+
   return (
     <form onSubmit={enviar} noValidate className="max-w-xl space-y-5">
       <Alerta tipo="error">{errorEnvio}</Alerta>
@@ -91,20 +127,45 @@ export default function FormVehiculo({ inicial, edicion = false, onGuardar, onCa
         autoComplete="off"
         error={errores.placa}
       />
-      <Input
+      <CampoSelect
         label="Marca"
-        value={marca}
-        onChange={(e) => setMarca(e.target.value)}
-        maxLength={LIMITES.marca}
-        error={errores.marca}
+        placeholder="Elige la marca"
+        opciones={opcionesMarca}
+        value={sel.marcaSel}
+        onChange={(e) => cambiarMarca(e.target.value)}
+        error={marcaOtra ? undefined : errores.marca}
       />
-      <Input
-        label="Modelo"
-        value={modelo}
-        onChange={(e) => setModelo(e.target.value)}
-        maxLength={LIMITES.modelo}
-        error={errores.modelo}
-      />
+      {marcaOtra && (
+        <Input
+          label="Escribe la marca"
+          value={sel.marcaTexto}
+          onChange={(e) => setSel((s) => ({ ...s, marcaTexto: e.target.value }))}
+          maxLength={LIMITES.marca}
+          autoComplete="off"
+          error={errores.marca}
+        />
+      )}
+      {!marcaOtra && (
+        <CampoSelect
+          label="Modelo"
+          placeholder={sel.marcaSel ? 'Elige el modelo' : 'Primero elige la marca'}
+          opciones={opcionesModelo}
+          value={sel.modeloSel}
+          onChange={(e) => setSel((s) => ({ ...s, modeloSel: e.target.value, modeloTexto: '' }))}
+          disabled={!sel.marcaSel}
+          error={sel.modeloSel === OTRO_MODELO ? undefined : errores.modelo}
+        />
+      )}
+      {modeloOtro && (
+        <Input
+          label={marcaOtra ? 'Modelo' : 'Escribe el modelo'}
+          value={sel.modeloTexto}
+          onChange={(e) => setSel((s) => ({ ...s, modeloTexto: e.target.value }))}
+          maxLength={LIMITES.modelo}
+          autoComplete="off"
+          error={errores.modelo}
+        />
+      )}
       <Input
         label="Año"
         type="text"
